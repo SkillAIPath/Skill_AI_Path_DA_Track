@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Session 1: Portfolio Health Assessment - Complete Analysis Framework</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            page-break-inside: avoid;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 8px;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            font-size: 1.3em;
+            margin: 20px 0 12px 0;
+        }
+        
+        .section h4 {
+            color: #2980b9;
+            font-size: 1.1em;
+            margin: 15px 0 8px 0;
+        }
+        
+        .business-question {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .objective-box {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            border: 1px solid #4a5568;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        .output-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+        
+        .output-table th {
+            background: #34495e;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #2c3e50;
+        }
+        
+        .output-table td {
+            padding: 8px 10px;
+            border: 1px solid #bdc3c7;
+            background: white;
+        }
+        
+        .output-table tr:nth-child(even) td {
+            background: #f8f9fa;
+        }
+        
+        .learning-tip {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .learning-tip h4 {
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        
+        .validation-box {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        .warning-box {
+            background: #f8d7da;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #17a2b8;
+        }
+        
+        .insights-box {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #0066cc;
+        }
+        
+        .insights-box h4 {
+            color: #0066cc;
+            margin-bottom: 8px;
+        }
+        
+        .final-output {
+            background: #e6f3ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #0066cc;
+        }
+        
+        .summary-section {
+            background: #f0f8f0;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 3px solid #27ae60;
+        }
+        
+        .summary-section h2 {
+            color: #2d5a2d;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+        }
+        
+        .breakdown-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .breakdown-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .breakdown-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .code-comment {
+            color: #a0aec0;
+            font-style: italic;
+        }
+        
+        .sql-keyword {
+            color: #63b3ed;
+            font-weight: bold;
+        }
+        
+        .sql-function {
+            color: #f687b3;
+            font-weight: bold;
+        }
+        
+        .sql-string {
+            color: #68d391;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: #6c757d;
+            font-size: 12px;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        @media print {
+            body {
+                font-size: 11px;
+            }
+            
+            .section {
+                margin-bottom: 20px;
+            }
+            
+            .code-block {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 SQL SESSION 1: PORTFOLIO HEALTH ASSESSMENT</h1>
+        <h2>Building Analytical Mindset Through Crisis Resolution</h2>
+        <p>"Where is our ₹12 crore bleeding from?" - Complete Business Intelligence Framework</p>
+    </div>
+
+    <div class="business-question">
+        <h3>📋 BUSINESS QUESTION: "How bad is our current situation?"</h3>
+        <p><strong>Query Objective:</strong> Establish baseline portfolio metrics to confirm crisis and quantify impact for board presentation</p>
+        <p><strong>Executive Context:</strong> CEO needs crisis confirmation and financial impact assessment in 3 hours for emergency board meeting</p>
+    </div>
+
+    <div class="section">
+        <h2>🏢 BUSINESS CONTEXT - Understanding EduFin's Financial Model</h2>
+        
+        <div class="objective-box">
+            <h3>How EduFin Makes Money:</h3>
+            <ul>
+                <li><strong>Interest Revenue:</strong> 12-18% annual interest on education loans</li>
+                <li><strong>Processing Fees:</strong> 1-3% of loan amount collected upfront</li>
+                <li><strong>Partnership Commissions:</strong> Institutions pay for student referrals</li>
+                <li><strong>Insurance Products:</strong> Loan protection and life insurance sales</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h3>How EduFin Loses Money:</h3>
+            <ul>
+                <li><strong>Defaults:</strong> Students who completely stop paying (current crisis)</li>
+                <li><strong>Collection Costs:</strong> Agencies, legal proceedings, staff time</li>
+                <li><strong>Regulatory Penalties:</strong> Compliance failures and audit costs</li>
+                <li><strong>Bad Debt Provisions:</strong> Setting aside money for expected losses</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>Industry Benchmarks - What "Good" Looks Like:</h3>
+            <ul>
+                <li><strong>Healthy Default Rate:</strong> 5-8% of total portfolio</li>
+                <li><strong>Crisis Threshold:</strong> >12% default rate requires board intervention</li>
+                <li><strong>Collection Efficiency:</strong> >85% of dues collected monthly</li>
+                <li><strong>Portfolio Growth:</strong> 15-25% annual growth in active loans</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🧩 STEP-BY-STEP ANALYTICAL APPROACH</h2>
+        
+        <h3>STEP 1A: Understanding Portfolio Distribution</h3>
+        <p><strong>Analytical Purpose:</strong> Before diving into crisis analysis, understand what loan statuses exist and their distribution.</p>
+        
+        <div class="code-block">-- Step 1A: Basic Portfolio Status Distribution
+-- BUSINESS OBJECTIVE: Get high-level view of loan portfolio health
+-- ANALYST MINDSET: Never analyze data without understanding its structure first
+
+<span class="sql-keyword">SELECT</span> 
+    loan_status,
+    <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> loan_count,
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">COUNT</span>(*) * 100.0 / (
+            <span class="sql-keyword">SELECT</span> <span class="sql-function">COUNT</span>(*) 
+            <span class="sql-keyword">FROM</span> loans 
+            <span class="sql-keyword">WHERE</span> disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+        ), 
+        1
+    ) <span class="sql-keyword">AS</span> percentage_of_portfolio
+<span class="sql-keyword">FROM</span> loans
+<span class="sql-keyword">WHERE</span> disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+<span class="sql-keyword">GROUP BY</span> loan_status
+<span class="sql-keyword">ORDER BY</span> loan_count <span class="sql-keyword">DESC</span>;</div>
+
+        <h4>Expected Output (EduFin Crisis Dataset):</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>loan_status</th>
+                    <th>loan_count</th>
+                    <th>percentage_of_portfolio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Active</td>
+                    <td>3,965</td>
+                    <td>79</td>
+                </tr>
+                <tr>
+                    <td>Defaulted</td>
+                    <td>590</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>Overdue</td>
+                    <td>273</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Closed</td>
+                    <td>172</td>
+                    <td>3</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 WHY This Query Matters:</h4>
+            <p>This foundational query reveals the portfolio health status - 16% of loans are problematic (5% overdue + 11% defaulted), which is above the industry standard of 8-10%.</p>
+            
+            <h4>🔍 WHAT The Data Reveals:</h4>
+            <ul>
+                <li><strong>Portfolio Status:</strong> 16% portfolio distress vs 8-10% industry standard - attention needed</li>
+                <li><strong>Scale of Problem:</strong> 863 problematic loans affecting operations</li>
+                <li><strong>Business Viability:</strong> 79% active portfolio shows core model works</li>
+                <li><strong>Recovery Challenge:</strong> Only 3% closure rate indicates collection challenges</li>
+            </ul>
+            
+            <h4>💡 EXECUTIVE INSIGHTS:</h4>
+            <ul>
+                <li><strong>Moderate Risk:</strong> 11% default rate is 3 points above normal but manageable</li>
+                <li><strong>Early Intervention Opportunity:</strong> 5% overdue loans can be saved with focused effort</li>
+                <li><strong>Collection Gap:</strong> Low 3% closure rate suggests process improvement needed</li>
+                <li><strong>Resource Focus:</strong> 863 problem loans need dedicated attention</li>
+            </ul>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Key Learning Points:</h4>
+            <ul>
+                <li><strong>WHERE clause filtering:</strong> Always exclude NULL dates to avoid data quality issues</li>
+                <li><strong>Percentage calculation:</strong> Use subquery in denominator for accurate percentages</li>
+                <li><strong>ORDER BY logic:</strong> Sort by count to see largest categories first</li>
+                <li><strong>Business validation:</strong> Results should align with known business context</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>STEP 1B: Basic Portfolio Metrics (CTE Foundation)</h3>
+        <p><strong>Analytical Purpose:</strong> Establish core portfolio metrics - scale, scope, and basic financial data for executive context.</p>
+        
+        <div class="code-block">-- Step 1B: Basic Portfolio Scale and Scope
+-- BUSINESS OBJECTIVE: Establish baseline metrics for executive decision-making
+-- FOUNDATION BUILDING: Core numbers every analysis will reference
+
+<span class="sql-keyword">SELECT</span> 
+    <span class="code-comment">-- Scale metrics for executive context</span>
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> customer_id) <span class="sql-keyword">AS</span> total_customers,
+    <span class="sql-function">COUNT</span>(loan_id) <span class="sql-keyword">AS</span> total_loans,
+    
+    <span class="code-comment">-- Financial scale assessment</span>
+    <span class="sql-function">SUM</span>(loan_amount) <span class="sql-keyword">AS</span> total_portfolio_value,
+    <span class="sql-function">AVG</span>(loan_amount) <span class="sql-keyword">AS</span> avg_loan_size,
+    
+    <span class="code-comment">-- Business model validation</span>
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">SUM</span>(loan_amount) / 10000000.0, 
+        2
+    ) <span class="sql-keyword">AS</span> portfolio_crores,
+    
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">AVG</span>(loan_amount) / 100000.0, 
+        2
+    ) <span class="sql-keyword">AS</span> avg_loan_lakhs
+
+<span class="sql-keyword">FROM</span> loans
+<span class="sql-keyword">WHERE</span> disbursement_date <span class="sql-keyword">IS NOT NULL</span>;</div>
+
+        <h4>Expected Output:</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>total_customers</th>
+                    <th>total_loans</th>
+                    <th>total_portfolio_value</th>
+                    <th>avg_loan_size</th>
+                    <th>portfolio_crores</th>
+                    <th>avg_loan_lakhs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3,000</td>
+                    <td>5,000</td>
+                    <td>₹204.82 Cr</td>
+                    <td>₹4,09,647.53</td>
+                    <td>204.82</td>
+                    <td>4.1</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 WHY These Basic Metrics Matter:</h4>
+            <p>Establishes the scale of operations for executive decision-making. ₹204.82 crores is significant enough to require board-level intervention and dedicated resources.</p>
+            
+            <h4>🔍 WHAT The Scale Numbers Reveal:</h4>
+            <ul>
+                <li><strong>Business Scale:</strong> ₹204.82 crores total exposure justifies dedicated recovery resources</li>
+                <li><strong>Customer Base:</strong> 3,000 relationships represent significant market presence</li>
+                <li><strong>Lending Pattern:</strong> 1.67:1 loan-to-customer ratio indicates multiple loans per customer</li>
+                <li><strong>Market Positioning:</strong> ₹4.1L average loan size appropriate for education financing</li>
+            </ul>
+            
+            <h4>💡 EXECUTIVE IMPLICATIONS:</h4>
+            <ul>
+                <li><strong>Resource Justification:</strong> Portfolio size justifies dedicated collection team</li>
+                <li><strong>Market Significance:</strong> Scale supports sophisticated risk management tools</li>
+                <li><strong>Revenue Potential:</strong> ₹204.82 Cr × 15% interest = ₹30.72 Cr potential annual revenue</li>
+                <li><strong>Strategic Value:</strong> Customer base represents significant long-term asset</li>
+            </ul>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Key Learning Points:</h4>
+            <ul>
+                <li><strong>COUNT(DISTINCT customer_id):</strong> Unique customers (removes duplicates if customers have multiple loans)</li>
+                <li><strong>COUNT(loan_id):</strong> Total loans (includes multiple loans per customer)</li>
+                <li><strong>SUM(loan_amount):</strong> Total money disbursed to customers</li>
+                <li><strong>AVG(loan_amount):</strong> Average loan size for risk assessment</li>
+                <li><strong>Executive formatting:</strong> Convert raw numbers to business-friendly crores/lakhs</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>STEP 1C: Risk Metrics Analysis (CTE Risk Assessment)</h3>
+        <p><strong>Analytical Purpose:</strong> Break down portfolio by risk categories to understand the crisis composition and prioritize interventions.</p>
+        
+        <div class="code-block">-- Step 1C: Risk Categorization and Status Analysis
+-- BUSINESS OBJECTIVE: Understand portfolio composition by risk level
+-- RISK INTELLIGENCE: Identify which categories need immediate attention
+
+<span class="sql-keyword">SELECT</span> 
+    <span class="code-comment">-- Risk category counts using conditional aggregation</span>
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Active'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> active_loans,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> defaulted_loans,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Closed'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> closed_loans,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> overdue_loans,
+    
+    <span class="code-comment">-- Total count for percentage calculations</span>
+    <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> total_loans,
+    
+    <span class="code-comment">-- Risk percentages for executive dashboard</span>
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / <span class="sql-function">COUNT</span>(*), 
+        2
+    ) <span class="sql-keyword">AS</span> default_rate_percent,
+    
+    <span class="sql-function">ROUND</span>(
+        (<span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) + 
+         <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>)) * 100.0 / <span class="sql-function">COUNT</span>(*), 
+        2
+    ) <span class="sql-keyword">AS</span> portfolio_at_risk_percent,
+    
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Active'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / <span class="sql-function">COUNT</span>(*), 
+        2
+    ) <span class="sql-keyword">AS</span> healthy_portfolio_percent
+
+<span class="sql-keyword">FROM</span> loans
+<span class="sql-keyword">WHERE</span> disbursement_date <span class="sql-keyword">IS NOT NULL</span>;</div>
+
+        <h4>Expected Output:</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>active_loans</th>
+                    <th>defaulted_loans</th>
+                    <th>closed_loans</th>
+                    <th>overdue_loans</th>
+                    <th>total_loans</th>
+                    <th>default_rate_percent</th>
+                    <th>portfolio_at_risk_percent</th>
+                    <th>healthy_portfolio_percent</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3,965</td>
+                    <td>590</td>
+                    <td>172</td>
+                    <td>273</td>
+                    <td>5,000</td>
+                    <td>11</td>
+                    <td>17</td>
+                    <td>79</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 WHY Risk Breakdown is Critical:</h4>
+            <p>Provides granular view of portfolio health for targeted action planning. Different risk categories require different collection strategies and resource allocation.</p>
+            
+            <h4>🔍 WHAT Each Risk Category Means:</h4>
+            <ul>
+                <li><strong>Active (3,965):</strong> Revenue-generating loans requiring standard monitoring</li>
+                <li><strong>Defaulted (590):</strong> Loan failures requiring legal action or write-off</li>
+                <li><strong>Closed (172):</strong> Success stories proving collection methods work</li>
+                <li><strong>Overdue (273):</strong> Early intervention opportunity to prevent defaults</li>
+            </ul>
+            
+            <h4>💡 STRATEGIC RISK INSIGHTS:</h4>
+            <ul>
+                <li><strong>Risk Elevation:</strong> 11% default rate vs 5-8% industry standard = enhanced monitoring required</li>
+                <li><strong>Prevention Opportunity:</strong> 5% overdue loans can be saved with focused collection effort</li>
+                <li><strong>Collection Success:</strong> 3% closure rate shows recovery methods need improvement</li>
+                <li><strong>Core Stability:</strong> 79% active portfolio shows fundamental business model is sound</li>
+            </ul>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Key Learning Points:</h4>
+            <ul>
+                <li><strong>CASE WHEN ... THEN 1 END:</strong> Creates conditional counting for specific categories</li>
+                <li><strong>Conditional aggregation:</strong> COUNT only includes rows where condition is true</li>
+                <li><strong>Percentage calculations:</strong> Multiply by 100.0 to get percentages, use ROUND for clean display</li>
+                <li><strong>Business logic:</strong> Portfolio at Risk = Defaulted + Overdue (both need attention)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>STEP 1D: Financial Impact Assessment (CTE Financial Intelligence)</h3>
+        <p><strong>Analytical Purpose:</strong> Quantify actual monetary damage and remaining earning potential for executive resource allocation decisions.</p>
+        
+        <div class="code-block">-- Step 1D: Financial Impact by Risk Category
+-- BUSINESS OBJECTIVE: Calculate actual money at risk and revenue potential
+-- FINANCIAL INTELLIGENCE: Board needs concrete monetary numbers for decisions
+
+<span class="sql-keyword">SELECT</span> 
+    <span class="code-comment">-- Financial impact by status category</span>
+    <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Active'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> active_portfolio_value,
+    <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> total_default_value,
+    <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> overdue_portfolio_value,
+    <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Closed'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> successfully_recovered_value,
+    
+    <span class="code-comment">-- Executive-friendly formatting (crores)</span>
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Active'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) / 10000000.0, 
+        2
+    ) <span class="sql-keyword">AS</span> active_crores,
+    
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) / 10000000.0, 
+        2
+    ) <span class="sql-keyword">AS</span> defaulted_crores,
+    
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) / 10000000.0, 
+        2
+    ) <span class="sql-keyword">AS</span> overdue_crores,
+    
+    <span class="code-comment">-- Business impact calculations</span>
+    <span class="sql-function">ROUND</span>(
+        (<span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) + 
+         <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>)) / 10000000.0, 
+        2
+    ) <span class="sql-keyword">AS</span> total_at_risk_crores
+
+<span class="sql-keyword">FROM</span> loans
+<span class="sql-keyword">WHERE</span> disbursement_date <span class="sql-keyword">IS NOT NULL</span>;</div>
+
+        <h4>Expected Output:</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>active_portfolio_value</th>
+                    <th>total_default_value</th>
+                    <th>overdue_portfolio_value</th>
+                    <th>successfully_recovered_value</th>
+                    <th>active_crores</th>
+                    <th>defaulted_crores</th>
+                    <th>overdue_crores</th>
+                    <th>total_at_risk_crores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>₹162.41 Cr</td>
+                    <td>₹24.24 Cr</td>
+                    <td>₹10.94 Cr</td>
+                    <td>₹7.24 Cr</td>
+                    <td>162.41</td>
+                    <td>24.24</td>
+                    <td>10.94</td>
+                    <td>35.18</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 WHY Financial Impact Analysis is Essential:</h4>
+            <p>Quantifies actual monetary damage (₹24.24 Cr defaulted) and immediate risk (₹10.94 Cr overdue) versus remaining earning potential (₹162.41 Cr active) - critical for board resource allocation decisions.</p>
+            
+            <h4>🔍 WHAT The Financial Picture Reveals:</h4>
+            <ul>
+                <li><strong>Confirmed Losses:</strong> ₹24.24 crores already written off (defaulted loans)</li>
+                <li><strong>Immediate Risk:</strong> ₹10.94 crores overdue requiring urgent intervention</li>
+                <li><strong>Revenue Engine:</strong> ₹162.41 crores still generating 12-18% annual interest income</li>
+                <li><strong>Total Exposure:</strong> ₹35.18 crores (17% of portfolio) needs immediate attention</li>
+            </ul>
+            
+            <h4>💡 EXECUTIVE FINANCIAL INSIGHTS:</h4>
+            <ul>
+                <li><strong>Recovery ROI:</strong> ₹24.24 Cr loss justifies ₹2-5 Cr dedicated recovery investment</li>
+                <li><strong>Prevention Value:</strong> Saving ₹10.94 Cr overdue = preventing 45% increase in defaults</li>
+                <li><strong>Revenue Protection:</strong> ₹162.41 Cr × 15% = ₹24.36 Cr annual revenue to protect</li>
+                <li><strong>Risk Containment:</strong> ₹35.18 Cr at risk represents manageable exposure</li>
+            </ul>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Key Learning Points:</h4>
+            <ul>
+                <li><strong>CASE WHEN ... THEN amount ELSE 0 END:</strong> Sums only amounts meeting specific conditions</li>
+                <li><strong>Financial aggregation:</strong> SUM with conditional logic for category-specific totals</li>
+                <li><strong>Executive formatting:</strong> Divide by 10000000.0 to convert to crores for Indian business context</li>
+                <li><strong>Business combinations:</strong> Total at Risk = Defaulted + Overdue (both need resources)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>STEP 1E: Complete Executive Dashboard Query</h3>
+        <p><strong>Analytical Purpose:</strong> Combine all previous steps into a comprehensive board-ready dashboard that integrates scale, risk, and financial intelligence.</p>
+        
+        <div class="code-block">-- Step 1E: Complete Portfolio Health Dashboard
+-- BUSINESS OBJECTIVE: Comprehensive executive summary combining all analytical components
+-- CRISIS CONTEXT: Single query providing complete portfolio overview for emergency board meeting
+-- BUSINESS OBJECTIVE: Calculate actual money at risk and revenue potential
+-- EXECUTIVE FOCUS: Board needs concrete financial numbers for decision-making
+
+<span class="sql-keyword">SELECT</span> 
+    loan_status,
+    <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> loan_count,
+    
+    <span class="code-comment">-- Financial impact calculations</span>
+    <span class="sql-function">SUM</span>(loan_amount) <span class="sql-keyword">AS</span> total_amount,
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">SUM</span>(loan_amount) / 10000000.0, 
+        2
+    ) <span class="sql-keyword">AS</span> amount_crores,
+    
+    <span class="code-comment">-- Portfolio percentage by value</span>
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">SUM</span>(loan_amount) * 100.0 / (
+            <span class="sql-keyword">SELECT</span> <span class="sql-function">SUM</span>(loan_amount) 
+            <span class="sql-keyword">FROM</span> loans 
+            <span class="sql-keyword">WHERE</span> disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+        ), 
+        2
+    ) <span class="sql-keyword">AS</span> value_percentage,
+    
+    <span class="code-comment">-- Average loan size by status</span>
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">AVG</span>(loan_amount) / 100000.0, 
+        2
+    ) <span class="sql-keyword">AS</span> avg_loan_lakhs,
+    
+    <span class="code-comment">-- Business impact classification</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> loan_status = <span class="sql-string">'Active'</span> <span class="sql-keyword">THEN</span> <span class="sql-string">'💰 Revenue Generating'</span>
+        <span class="sql-keyword">WHEN</span> loan_status = <span class="sql-string">'Closed'</span> <span class="sql-keyword">THEN</span> <span class="sql-string">'✅ Successfully Recovered'</span>
+        <span class="sql-keyword">WHEN</span> loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> <span class="sql-string">'🚨 Revenue Loss'</span>
+        <span class="sql-keyword">WHEN</span> loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> <span class="sql-string">'⚠️ At Risk'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'❓ Investigate'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> business_impact
+
+<span class="sql-keyword">FROM</span> loans
+<span class="sql-keyword">WHERE</span> disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+<span class="sql-keyword">GROUP BY</span> loan_status
+<span class="sql-keyword">ORDER BY</span> <span class="sql-function">SUM</span>(loan_amount) <span class="sql-keyword">DESC</span>;</div>
+
+        <h4>Expected Output:</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>loan_status</th>
+                    <th>loan_count</th>
+                    <th>total_amount</th>
+                    <th>amount_crores</th>
+                    <th>value_percentage</th>
+                    <th>avg_loan_lakhs</th>
+                    <th>business_impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Active</td>
+                    <td>3,965</td>
+                    <td>₹162.41 Cr</td>
+                    <td>162.41</td>
+                    <td>79.29</td>
+                    <td>4.1</td>
+                    <td>💰 Revenue Generating</td>
+                </tr>
+                <tr>
+                    <td>Defaulted</td>
+                    <td>590</td>
+                    <td>₹24.24 Cr</td>
+                    <td>24.24</td>
+                    <td>11.83</td>
+                    <td>4.11</td>
+                    <td>🚨 Revenue Loss</td>
+                </tr>
+                <tr>
+                    <td>Overdue</td>
+                    <td>273</td>
+                    <td>₹10.94 Cr</td>
+                    <td>10.94</td>
+                    <td>5.34</td>
+                    <td>4.01</td>
+                    <td>⚠️ At Risk</td>
+                </tr>
+                <tr>
+                    <td>Closed</td>
+                    <td>172</td>
+                    <td>₹7.24 Cr</td>
+                    <td>7.24</td>
+                    <td>3.53</td>
+                    <td>4.21</td>
+                    <td>✅ Successfully Recovered</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 WHY This Financial Analysis is Critical:</h4>
+            <p>Quantifies actual monetary damage (₹24.24 Cr defaulted) and identifies remaining earning potential (₹162.41 Cr active) - essential for resource allocation decisions.</p>
+            
+            <h4>🔍 WHAT The Financial Picture Shows:</h4>
+            <ul>
+                <li><strong>Confirmed Losses:</strong> ₹24.24 crores already written off (defaulted)</li>
+                <li><strong>At-Risk Capital:</strong> ₹10.94 crores in overdue status requiring immediate attention</li>
+                <li><strong>Revenue Engine:</strong> ₹162.41 crores still generating 12-18% annual interest</li>
+                <li><strong>Success Evidence:</strong> ₹7.24 crores successfully recovered proves model works</li>
+            </ul>
+            
+            <h4>💡 STRATEGIC BUSINESS INSIGHTS:</h4>
+            <ul>
+                <li><strong>Recovery Justification:</strong> ₹24.24 Cr loss justifies ₹2-5 Cr recovery investment</li>
+                <li><strong>Prevention Opportunity:</strong> ₹10.94 Cr overdue can be saved with immediate action</li>
+                <li><strong>Revenue Potential:</strong> ₹162.41 Cr × 15% interest = ₹24.36 Cr annual revenue</li>
+                <li><strong>Business Viability:</strong> 6.7:1 ratio of active to defaulted loans shows healthy fundamentals</li>
+            </ul>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Key Learning Points:</h4>
+            <ul>
+                <li><strong>Executive formatting:</strong> Convert to crores/lakhs for Indian business context</li>
+                <li><strong>CASE statements:</strong> Add business meaning to raw data categories</li>
+                <li><strong>Percentage calculations:</strong> Show both count and value distributions</li>
+                <li><strong>ORDER BY strategy:</strong> Sort by financial impact (amount) not count</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h3>STEP 1C: Executive Dashboard Query</h3>
+        <p><strong>Analytical Purpose:</strong> Create board-ready summary combining all metrics into executive decision-making format.</p>
+        
+        <div class="code-block">-- Step 1C: Executive Portfolio Health Dashboard
+-- BUSINESS OBJECTIVE: Single query providing complete portfolio overview for board
+-- CRISIS CONTEXT: CEO needs immediate answers for emergency board meeting
+
+<span class="sql-keyword">WITH</span> portfolio_summary <span class="sql-keyword">AS</span> (
+    <span class="sql-keyword">SELECT</span> 
+        <span class="code-comment">-- Scale and scope metrics</span>
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> customer_id) <span class="sql-keyword">AS</span> total_customers,
+        <span class="sql-function">COUNT</span>(loan_id) <span class="sql-keyword">AS</span> total_loans,
+        <span class="sql-function">SUM</span>(loan_amount) <span class="sql-keyword">AS</span> total_portfolio_value,
+        <span class="sql-function">AVG</span>(loan_amount) <span class="sql-keyword">AS</span> avg_loan_size,
+        
+        <span class="code-comment">-- Risk categorization counts</span>
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Active'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> active_loans,
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> defaulted_loans,
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Closed'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> closed_loans,
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> overdue_loans,
+        
+        <span class="code-comment">-- Financial impact by status</span>
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Active'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> active_portfolio_value,
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> total_default_value,
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> overdue_portfolio_value
+        
+    <span class="sql-keyword">FROM</span> loans
+    <span class="sql-keyword">WHERE</span> disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+)
+<span class="sql-keyword">SELECT</span> 
+    <span class="code-comment">-- Executive summary metrics (board-ready format)</span>
+    <span class="sql-function">CONCAT</span>(<span class="sql-function">FORMAT</span>(total_customers, 'N0'), ' customers') <span class="sql-keyword">AS</span> customer_base,
+    <span class="sql-function">CONCAT</span>(<span class="sql-function">FORMAT</span>(total_loans, 'N0'), ' loans') <span class="sql-keyword">AS</span> loan_portfolio,
+    <span class="sql-function">CONCAT</span>('₹', <span class="sql-function">FORMAT</span>(total_portfolio_value / 10000000, 'N0'), ' Crores') <span class="sql-keyword">AS</span> total_exposure,
+    <span class="sql-function">CONCAT</span>('₹', <span class="sql-function">ROUND</span>(avg_loan_size / 100000, 1), ' Lakhs') <span class="sql-keyword">AS</span> avg_loan_size,
+    
+    <span class="code-comment">-- Crisis confirmation metrics</span>
+    <span class="sql-function">ROUND</span>((defaulted_loans * 100.0 / total_loans), 2) <span class="sql-keyword">AS</span> default_rate_percent,
+    <span class="sql-function">CONCAT</span>('₹', <span class="sql-function">ROUND</span>(total_default_value / 10000000, 1), ' Cr') <span class="sql-keyword">AS</span> confirmed_losses,
+    <span class="sql-function">ROUND</span>(((defaulted_loans + overdue_loans) * 100.0 / total_loans), 2) <span class="sql-keyword">AS</span> portfolio_at_risk_percent,
+    
+    <span class="code-comment">-- Business health indicators</span>
+    <span class="sql-function">ROUND</span>((active_portfolio_value * 100.0 / total_portfolio_value), 1) <span class="sql-keyword">AS</span> revenue_generating_percent,
+    <span class="sql-function">ROUND</span>((closed_loans * 100.0 / total_loans), 1) <span class="sql-keyword">AS</span> successful_closure_rate,
+    
+    <span class="code-comment">-- Executive risk assessment</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> (defaulted_loans * 100.0 / total_loans) > 15 <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 CRITICAL'</span>
+        <span class="sql-keyword">WHEN</span> (defaulted_loans * 100.0 / total_loans) > 10 <span class="sql-keyword">THEN</span> <span class="sql-string">'🟡 HIGH RISK'</span> 
+        <span class="sql-keyword">WHEN</span> (defaulted_loans * 100.0 / total_loans) > 5 <span class="sql-keyword">THEN</span> <span class="sql-string">'🟠 MODERATE'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'🟢 HEALTHY'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> portfolio_health,
+    
+    <span class="code-comment">-- Board action recommendation</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> (defaulted_loans * 100.0 / total_loans) > 12 
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'Deploy crisis management team + external recovery agencies'</span>
+        <span class="sql-keyword">WHEN</span> (defaulted_loans * 100.0 / total_loans) > 8 
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'Enhance collection resources + review underwriting standards'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'Continue standard risk monitoring protocols'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> recommended_board_action
+    
+<span class="sql-keyword">FROM</span> portfolio_summary;</div>
+
+        <div class="final-output">
+            <h2>📊 EXECUTIVE DASHBOARD OUTPUT</h2>
+            <table class="output-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                        <th>Business Interpretation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Customer Base</td>
+                        <td>3,000 customers</td>
+                        <td>Significant scale justifying dedicated resources</td>
+                    </tr>
+                    <tr>
+                        <td>Total Exposure</td>
+                        <td>₹205 Crores</td>
+                        <td>Material financial risk requiring board oversight</td>
+                    </tr>
+                    <tr>
+                        <td>Default Rate</td>
+                        <td>11.00%</td>
+                        <td>🟡 HIGH RISK - 3% above normal threshold</td>
+                    </tr>
+                    <tr>
+                        <td>Confirmed Losses</td>
+                        <td>₹24.2 Cr</td>
+                        <td>Immediate write-off impacting profitability</td>
+                    </tr>
+                    <tr>
+                        <td>Portfolio at Risk</td>
+                        <td>17.0%</td>
+                        <td>1 in 6 loans problematic - enhanced monitoring needed</td>
+                    </tr>
+                    <tr>
+                        <td>Revenue Generating %</td>
+                        <td>79.3%</td>
+                        <td>Business fundamentally viable</td>
+                    </tr>
+                    <tr>
+                        <td>Portfolio Health</td>
+                        <td>🟡 HIGH RISK</td>
+                        <td>Enhanced collection resources needed</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="insights-box">
+                <h4>🎯 WHAT This Dashboard Tells the Board:</h4>
+                <ul>
+                    <li><strong>Elevated Risk:</strong> 11% default rate is 3 percentage points above the 8% normal threshold</li>
+                    <li><strong>Material Impact:</strong> ₹24.2 crore loss represents significant financial damage</li>
+                    <li><strong>Manageable Issue:</strong> 17% portfolio at risk indicates focused intervention needed</li>
+                    <li><strong>Business Viability:</strong> 79% active portfolio generating revenue shows core model works</li>
+                    <li><strong>Strategic Response:</strong> Enhanced collection resources justified by scale and impact</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Key Learning Points:</h4>
+            <ul>
+                <li><strong>CTE structure:</strong> Separate complex calculations from presentation logic</li>
+                <li><strong>FORMAT function:</strong> Professional number presentation for executives</li>
+                <li><strong>Conditional logic:</strong> Automated risk assessment and recommendations</li>
+                <li><strong>Business context:</strong> Every metric connects to specific executive decisions</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h2>✅ VALIDATION & TROUBLESHOOTING</h2>
+        
+        <div class="validation-box">
+            <h3>Data Quality Validation Queries</h3>
+            <div class="code-block">-- Validation 1: Check for data completeness
+<span class="sql-keyword">SELECT</span> 
+    <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> total_loans,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> disbursement_date <span class="sql-keyword">IS NULL</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> missing_disbursement_dates,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_status <span class="sql-keyword">IS NULL</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> missing_status,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> loan_amount <= 0 <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> invalid_amounts
+<span class="sql-keyword">FROM</span> loans;
+<span class="code-comment">-- Expected: 0 for all validation columns</span>
+
+-- Validation 2: Verify loan status categories
+<span class="sql-keyword">SELECT</span> <span class="sql-keyword">DISTINCT</span> loan_status
+<span class="sql-keyword">FROM</span> loans
+<span class="sql-keyword">ORDER BY</span> loan_status;
+<span class="code-comment">-- Expected: Active, Closed, Defaulted, Overdue</span></div>
+        </div>
+
+        <div class="warning-box">
+            <h3>Common Issues & Solutions</h3>
+            <ul>
+                <li><strong>Division by Zero:</strong> Use NULLIF(denominator, 0) in percentage calculations</li>
+                <li><strong>NULL Handling:</strong> Always filter WHERE disbursement_date IS NOT NULL</li>
+                <li><strong>Formatting:</strong> Use CONCAT and FORMAT for executive-ready output</li>
+                <li><strong>Validation:</strong> Cross-check percentages sum to 100% where expected</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="summary-section">
+        <h2>📋 SESSION 1 COMPREHENSIVE SUMMARY</h2>
+        
+        <h3>🎯 PORTFOLIO ANALYSIS ACHIEVEMENTS</h3>
+        <div class="validation-box">
+            <h4>Key Findings Confirmed:</h4>
+            <ul>
+                <li><strong>Portfolio Risk Identified:</strong> 11% default rate vs 5-8% industry standard</li>
+                <li><strong>Financial Impact Quantified:</strong> ₹24.24 crores in confirmed losses</li>
+                <li><strong>Scale Established:</strong> ₹204.82 crore portfolio affecting 3,000 customers</li>
+                <li><strong>Business Viability Confirmed:</strong> 79% active portfolio shows sound fundamentals</li>
+                <li><strong>Action Priorities Set:</strong> 17% portfolio at risk requires enhanced collection efforts</li>
+            </ul>
+        </div>
+
+        <h3>💡 STRATEGIC BUSINESS INSIGHTS</h3>
+        <div class="info-box">
+            <h4>Executive Decision Support:</h4>
+            <ul>
+                <li><strong>Risk Management:</strong> 11% default rate mandates enhanced collection resources</li>
+                <li><strong>Recovery Investment:</strong> ₹24.24 Cr loss justifies ₹2-5 Cr recovery budget</li>
+                <li><strong>Prevention Opportunity:</strong> ₹10.94 Cr overdue can be saved with immediate action</li>
+                <li><strong>Revenue Protection:</strong> ₹162.41 Cr active portfolio generates ₹24+ Cr annual income</li>
+            </ul>
+        </div>
+
+        <h3>🔧 SQL SKILLS MASTERED</h3>
+        <div class="learning-tip">
+            <h4>Technical Competencies Developed:</h4>
+            <ul>
+                <li><strong>Conditional Aggregation:</strong> COUNT(CASE WHEN) for business intelligence</li>
+                <li><strong>CTE Structure:</strong> Separating calculation from presentation logic</li>
+                <li><strong>Executive Formatting:</strong> Indian rupee presentation (Crores/Lakhs)</li>
+                <li><strong>Business Logic:</strong> Automated risk assessment and recommendations</li>
+                <li><strong>Data Validation:</strong> Quality checks preventing analytical errors</li>
+            </ul>
+        </div>
+
+        <h3>🚀 NEXT STEPS PREPARATION</h3>
+        <div class="objective-box">
+            <h4>Foundation for Advanced Analysis:</h4>
+            <p><strong>Session 2:</strong> Geographic Risk Analysis - "Which cities are bleeding money?"</p>
+            <p><strong>Session 3:</strong> Customer Risk Segmentation - "Who are our financial time bombs?"</p>
+            <p><strong>Session 4:</strong> Institution Partnership Analysis - "Which partners are destroying value?"</p>
+            <p><strong>Session 5:</strong> Data Integrity Deep Dive - "How did we miss this crisis?"</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>© 2025 Skill AI Path. All Rights Reserved.</strong></p>
+        <p>Created by: Viresh Gendle | tech@skillaipath.com | skillaipath.com</p>
+        <p>Licensed for educational and internal business use. Attribution required when sharing. Commercial redistribution prohibited.</p>
+    </div>
+</body>
+</html>

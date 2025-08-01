@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFin SQL V1 Logic Flow Guide</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            font-size: 11pt;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: #2c3e50;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+        
+        .header h1 {
+            font-size: 28pt;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .header h2 {
+            font-size: 18pt;
+            margin-bottom: 15px;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+        
+        .header p {
+            font-size: 12pt;
+            opacity: 0.8;
+        }
+        
+        .assignment {
+            margin-bottom: 40px;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+        
+        .assignment-header {
+            background: #34495e;
+            color: white;
+            padding: 15px 20px;
+            font-size: 14pt;
+            font-weight: bold;
+        }
+        
+        .assignment-content {
+            padding: 20px;
+        }
+        
+        .step-section {
+            margin-bottom: 25px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        .step-header {
+            color: #2c3e50;
+            font-size: 12pt;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .step-content {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .what-box {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 8px 0;
+        }
+        
+        .why-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 8px 0;
+        }
+        
+        .insight-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            padding: 12px;
+            margin: 8px 0;
+        }
+        
+        .special-step {
+            border-left-color: #e74c3c;
+        }
+        
+        .foundation-step {
+            border-left-color: #f39c12;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 14pt;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .toc li {
+            margin: 8px 0;
+            padding: 5px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+        
+        .intro-section {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .intro-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 14pt;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 9pt;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        .label {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        @media print {
+            .assignment {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>EduFin SQL V1 Logic Flow Guide</h1>
+        <h2>Understanding the Analytical Thinking Process</h2>
+        <p>Step-by-Step Logic and Business Reasoning</p>
+        <p><strong>Portfolio Crisis Analysis - Beginner's Guide</strong></p>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="toc">
+        <h3>Table of Contents</h3>
+        <ul>
+            <li>1. Assignment 1: Portfolio Health Check</li>
+            <li>2. Assignment 2: Geographic Risk Analysis</li>
+            <li>3. Assignment 3: Customer Risk Segmentation</li>
+            <li>4. Assignment 4: Institution Risk Analysis</li>
+            <li>5. Assignment 5: Time-Based Crisis Analysis</li>
+        </ul>
+    </div>
+
+    <!-- Introduction -->
+    <div class="intro-section">
+        <h3>How to Use This Guide</h3>
+        <p>This guide explains the <strong>logic and thinking process</strong> behind each SQL analysis step. For each step, you'll learn:</p>
+        <ul>
+            <li><strong>What:</strong> What the step is doing with the data</li>
+            <li><strong>Why:</strong> Why this logic or calculation is necessary</li>
+            <li><strong>Insight:</strong> What business value or insight it generates</li>
+        </ul>
+        <p>No SQL code is included - this focuses purely on understanding the analytical thinking process that drives effective data analysis.</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Assignment 1 -->
+    <div class="assignment">
+        <div class="assignment-header">
+            Assignment 1: Step 1 – Portfolio Health Check
+        </div>
+        <div class="assignment-content">
+            
+            <div class="step-section">
+                <div class="step-header">STEP 1A: Understanding the Data Structure</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We examine the loans table to understand what data is available and how it's organized. We identify key fields like customer_id, loan_amount, loan_status, and disbursement_date.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Before analyzing data, we must understand what information we have and how it's structured. This prevents errors and helps us plan our analysis approach. We need to know which loans are actually disbursed (not just approved) for accurate calculations.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This step ensures we're working with the right dataset and understand the scope of our analysis. It establishes the foundation for all subsequent calculations.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 1B: Basic Portfolio Metrics (CTE Part 1)</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We calculate fundamental portfolio numbers: total number of unique customers, total number of loans, sum of all loan amounts, and average loan size.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> These basic metrics give us the scale and scope of the portfolio. We need to know the total value at risk and the typical loan size to understand the business context. Counting unique customers is important because some customers have multiple loans.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> These metrics tell the CEO exactly how big the portfolio is and how much money is involved. This provides context for all other analysis - a 12% default rate means different things for a ₹50 crore vs ₹500 crore portfolio.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 1C: Risk Metrics (CTE Part 2)</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We count how many loans fall into each status category: Active (currently being repaid), Defaulted (stopped paying), and Closed (fully repaid). We use conditional counting to separate loans by status.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Understanding the distribution of loan statuses shows us the health of the portfolio. A high proportion of defaulted loans indicates serious problems, while a high proportion of closed loans shows successful collections.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This breakdown immediately shows whether the portfolio is healthy or in crisis. It provides the foundation for calculating default rates and understanding portfolio performance trends.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 1D: Financial Impact (CTE Part 3)</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We calculate the total financial value of defaulted loans and active loans. This shows how much money has been lost to defaults and how much is still generating revenue.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Raw counts don't tell the full story - we need to know the financial impact. A portfolio could have few defaults but if they're large loans, the financial damage could be severe. Conversely, many small defaults might be less concerning than a few large ones.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This shows the actual financial damage in rupees, which executives can relate to better than percentages. It helps prioritize recovery efforts and assess the true scale of the crisis.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section special-step">
+                <div class="step-header">COMPLETE VALIDATED QUERY</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We combine all the metrics from the previous steps and format them for executive presentation. We calculate default rate percentages, format large numbers in crores and lakhs, and create a health classification system.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Raw numbers need to be transformed into business-friendly formats. Executives think in percentages and crores, not individual rupees. The health classification provides immediate understanding of portfolio condition without requiring interpretation.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This delivers a complete portfolio dashboard showing the company has a 12.4% default rate, ₹62 crore losses, and is in "HIGH RISK" condition. The CEO now has concrete numbers for the board meeting.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Assignment 2 -->
+    <div class="assignment">
+        <div class="assignment-header">
+            Assignment 2: Step 2 – Geographic Risk Analysis
+        </div>
+        <div class="assignment-content">
+            
+            <div class="step-section foundation-step">
+                <div class="step-header">STEP 2A: Basic City Structure Understanding ⭐ FOUNDATION</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We connect customer data with loan data to group all information by city. We count how many customers and loans exist in each city to understand geographic distribution.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Geographic analysis helps identify location-specific patterns. Some cities might have cultural, economic, or demographic factors that affect loan repayment. We need to understand where our customers are located before analyzing their performance.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This shows us which cities are our major markets and reveals the geographic spread of our business. It establishes the foundation for identifying problem locations.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 2B: Add Portfolio Value Calculations ⭐ BUILD COMPLEXITY</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We calculate the total loan portfolio value for each city by summing all loan amounts for customers in that city. This shows which cities represent the largest financial exposure.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Understanding financial exposure by city is crucial for risk management. A city with many customers but small loans might be less concerning than a city with fewer customers but very large loans. Portfolio value helps prioritize attention.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This reveals which cities represent the highest financial stakes for the company. Large portfolio cities require more careful monitoring and management.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 2C: Add Default Risk Metrics ⭐ IDENTIFY PROBLEM AREAS</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We count defaulted loans per city and calculate city-specific default rates. This shows which geographic locations have the highest percentage of loan failures.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Default rates vary significantly by location due to local economic conditions, job markets, cultural factors, and educational institution quality. Identifying high-risk cities helps target intervention efforts and adjust lending policies.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This pinpoints exactly which cities are causing portfolio problems. Cities with 15%+ default rates need immediate attention, while cities with 5% rates might be good expansion targets.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 2D: Calculate Financial Impact ⭐ QUANTIFY LOSSES</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We calculate the total rupee value of losses from each city by summing defaulted loan amounts. We convert these to crores for executive reporting.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Default rates alone don't show financial impact. A city with 10% default rate on large loans causes more damage than a city with 15% default rate on small loans. We need absolute financial impact for prioritization.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This shows which cities are bleeding the most money. Mumbai might have ₹12 crores in losses while a smaller city has only ₹50 lakhs, despite similar default rates. Financial impact drives resource allocation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 2E: Add Business Priority Logic ⭐ ACTION PLANNING</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We create action-oriented classifications that combine volume and risk metrics. Cities get labeled as URGENT, CRITICAL, MONITOR, or STABLE based on both loan volume and default rates.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Management needs clear guidance on where to focus limited resources. A classification system that considers both scale and risk helps prioritize actions. High-volume cities with high risk need different treatment than low-volume cities with high risk.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This transforms data analysis into actionable business intelligence. Instead of just knowing Mumbai has problems, we know it requires "URGENT: High Volume + High Risk" attention with specific resource allocation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section special-step">
+                <div class="step-header">FINAL COMPLETE QUERY</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We combine all elements and add filtering to focus on significant cities (100+ loans), sort by highest financial impact first, and limit results to top 20 problem cities.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Management attention is limited, so we must focus on cities that matter most. Small cities with few loans don't warrant senior executive attention. Sorting by financial impact ensures the biggest problems get addressed first.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This delivers a prioritized action list showing Mumbai needs immediate intervention with ₹12 crore losses, while Delhi requires different strategies based on its specific risk profile. Clear, focused, actionable intelligence.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Assignment 3 -->
+    <div class="assignment">
+        <div class="assignment-header">
+            Assignment 3: Step 3 – Customer Risk Segmentation
+        </div>
+        <div class="assignment-content">
+            
+            <div class="step-section">
+                <div class="step-header">STEP 3.1: Basic Customer-Loan Relationship</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We connect customer information (demographics, income, CIBIL score, employment) with their loan history to create individual customer profiles.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Understanding individual customer risk requires combining personal characteristics with loan performance. Some customers have multiple loans, so we need to see their complete relationship with the company.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This creates comprehensive customer profiles that collection teams can use to understand who they're dealing with and tailor their approach accordingly.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 3.2: Add Default Tracking</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We count how many loans each customer has taken and how many of those loans have defaulted. We also calculate the total exposure (sum of all loan amounts) per customer.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> A customer with 3 loans and 2 defaults is much riskier than a customer with 1 loan and 1 default, even though both have defaults. Total exposure shows how much money is at risk with each customer.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This reveals patterns in customer behavior and helps identify customers who repeatedly default versus those who had a one-time problem.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 3.3: Calculate Risk Ratios</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We calculate each customer's personal default rate (defaulted loans divided by total loans) and total loss amount from their defaults.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Personal default rate shows reliability patterns. A customer with 50% default rate (1 out of 2 loans) is different from one with 33% rate (1 out of 3 loans). Loss amount shows financial impact per customer.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This creates quantified risk metrics for each customer, enabling data-driven collection prioritization instead of random follow-ups.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 3.4: Add Business-Friendly Formatting</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We format financial numbers in lakhs (L) for easier reading and include all relevant customer information in a clean, organized display.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Collection agents and managers need information presented in familiar formats. "₹8.5L income" is easier to understand than "₹850,000 income." Clean formatting speeds up decision-making.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This makes the analysis actionable for front-line staff who need to quickly assess customer profiles and decide on collection approaches.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 3.5: Add Risk Categorization Logic</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We create risk categories (EXTREME RISK, HIGH RISK, CREDIT RISK, HIGH EXPOSURE) based on multiple factors: number of defaults, exposure amount, default rate, and CIBIL score.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Simple rules help collection teams quickly understand customer risk levels. Multiple criteria ensure we catch different types of risky customers - those with multiple defaults, high exposure, poor credit, or high default rates.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This enables segmented collection strategies where different risk categories get different treatment approaches and resource allocation.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">STEP 3.6: Add Recommended Actions</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We assign specific action recommendations (IMMEDIATE LEGAL ACTION, AGGRESSIVE COLLECTION, RESTRUCTURE LOANS, REGULAR MONITORING) based on customer risk profiles.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Analysis without actionable recommendations wastes time. Collection teams need clear guidance on what to do with each customer. Different customer types require different approaches for maximum recovery success.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This transforms risk analysis into operational guidance, telling collection teams exactly how to approach each customer for best results.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section special-step">
+                <div class="step-header">STEP 3.7: Final Executive-Ready Customer Risk Analysis</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We filter to show only problem customers, sort by highest losses first, then highest exposure, and limit to top 50 customers for management focus.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Management time is limited and should focus on customers with highest recovery potential. Filtering out standard customers and prioritizing by financial impact ensures resources target the most important cases.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This delivers a prioritized collection target list where customer #1 might have ₹8.2L losses and needs immediate legal action, while customer #50 might need loan restructuring. Clear priorities for maximum impact.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Assignment 4 -->
+    <div class="assignment">
+        <div class="assignment-header">
+            Assignment 4: Step 4 – Institution Risk Analysis
+        </div>
+        <div class="assignment-content">
+            
+            <div class="step-section">
+                <div class="step-header">Step 4.1: Basic Institution Information</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We gather fundamental information about each educational institution: name, location, type (University/College/Institute), and tier classification (Tier1/Tier2/Tier3).
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Institution characteristics affect student quality and repayment behavior. Tier1 institutions typically attract better students but may have higher fees. Location affects job market access after graduation.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This provides context for understanding why certain institutions perform better or worse in loan repayment patterns.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">Step 4.2: Portfolio Metrics</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We count unique students funded from each institution, total loans disbursed to those students, total portfolio value per institution, and average loan amount per student.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Understanding our business relationship with each institution helps assess partnership value. Some institutions may have many students with small loans, others may have fewer students with large loans. Both patterns have different risk profiles.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This shows which institutions are our major partners and how much financial exposure we have with each educational relationship.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">Step 4.3: Default Analysis</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We count how many loans from each institution have defaulted and calculate the total financial value of those defaults.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Some institutions consistently produce students who struggle with loan repayment. This could be due to poor placement rates, inadequate career support, or weak academic programs that don't prepare students for good jobs.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This identifies which educational partnerships are causing financial losses and may need policy changes or termination.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">Step 4.4: Default Rate Calculations</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We calculate the percentage of loans that default for students from each institution (institution-specific default rate).
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Default rates normalize for institution size. An institution with 1000 students and 100 defaults (10%) is performing better than one with 200 students and 40 defaults (20%), even though the first has more absolute defaults.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This enables fair comparison between institutions of different sizes and identifies which partnerships have systematically poor performance.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">Step 4.5: Financial Impact Analysis</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We convert default amounts to crores for executive reporting and assess the total financial damage caused by each institution's students.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Financial impact helps prioritize institutional policy changes. An institution causing ₹5 crore losses needs immediate attention regardless of default rate, while one causing ₹10 lakh losses might be acceptable even with higher default rates.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This quantifies which educational partnerships are most damaging to the portfolio in absolute rupee terms.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">Step 4.6: Student Profile Analysis</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We calculate average annual income and average CIBIL score of students from each institution to understand student quality patterns.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Student quality varies by institution. Premium institutions may attract higher-income students with better credit scores, while lower-tier institutions may serve students with greater financial challenges. This context helps explain default patterns.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This reveals whether poor performance is due to institution quality (affecting job placement) or student selection (financial background), helping refine lending criteria.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section special-step">
+                <div class="step-header">Step 4.9: Executive Recommendations</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We create lending policy recommendations: BLACKLIST (stop new lending), HIGH RISK (reduce limits), PREFERRED (increase limits), or STANDARD (continue normal), based on volume and performance criteria.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Analysis must drive action. Different institutions require different lending approaches based on their track record. High-performing institutions should get more business, while problematic ones should face restrictions.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This transforms institutional analysis into clear policy guidance, showing ABC Engineering College should be blacklisted due to 22% default rates, while XYZ University should get increased limits due to excellent performance.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Assignment 5 -->
+    <div class="assignment">
+        <div class="assignment-header">
+            Assignment 5: Step 5 – Time-Based Crisis Analysis
+        </div>
+        <div class="assignment-content">
+            
+            <div class="step-section">
+                <div class="step-header">Step 5-A: Time-Based Aggregation</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We extract year and month information from loan disbursement dates and create organized time periods (like "2024-03" for March 2024) to group loans by when they were given out.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Understanding timing patterns is crucial for identifying when problems started. Seasonal trends, economic events, or policy changes often show up as time-based patterns in loan performance.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This enables trend analysis to show whether the crisis developed gradually or suddenly, helping identify root causes and predict future patterns.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">Step 5-B: Disbursement Metrics</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> For each month, we count how many loans were disbursed and calculate the total amount of money given out in that time period.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Disbursement patterns show business activity levels and help identify periods of rapid expansion or contraction. High disbursement months represent higher risk exposure if problems develop later.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This reveals business growth patterns and identifies periods when the company took on significant new risk through large disbursement volumes.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">Step 5-C: Default Tracking</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We track which loans from each disbursement month eventually defaulted and calculate the total value of those defaults.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> This shows the quality of lending decisions made in each time period. Loans disbursed in certain months may perform worse due to relaxed criteria, economic conditions, or operational problems during those periods.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This identifies which time periods produced the worst-performing loan batches, helping pinpoint when lending standards may have deteriorated.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section">
+                <div class="step-header">Step 5-D: Performance Calculations</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We calculate monthly default rates (percentage of loans from each month that defaulted) and monthly losses in crores. We also create risk level classifications for each time period.
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Monthly performance metrics reveal trends and patterns over time. This helps identify whether the crisis developed gradually or had specific trigger points. Risk classifications make trends easier to understand at a glance.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This shows that default rates increased from 8% in early 2023 to 16%+ in 2024, revealing a clear deterioration timeline that can inform recovery planning.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-section special-step">
+                <div class="step-header">Final Combined Query - Complete Analysis</div>
+                <div class="step-content">
+                    <div class="what-box">
+                        <span class="label">What:</span> We combine all time-based metrics, add financial impact classifications, focus on recent 24 months, and present results in reverse chronological order (newest first).
+                    </div>
+                    <div class="why-box">
+                        <span class="label">Why:</span> Recent trends are most relevant for current decision-making. Showing latest months first helps management understand current trajectory. Financial impact classifications help prioritize which time periods represent the biggest ongoing concerns.
+                    </div>
+                    <div class="insight-box">
+                        <span class="label">Insight:</span> This delivers a complete timeline showing that March 2024 was a "CRISIS MONTH" with 16.8% default rate and ₹3.1 crore losses, while earlier periods were more stable. Clear evidence of when and how the crisis developed.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>EduFin SQL V1 Logic Flow Guide</strong> | Understanding Analytical Thinking Without Code</p>
+        <p>This guide explains the WHY behind each analysis step to build strong analytical thinking skills</p>
+        <p>Master the logic first, then the SQL syntax becomes much easier to understand and apply</p>
+    </div>
+</body>
+</html>
