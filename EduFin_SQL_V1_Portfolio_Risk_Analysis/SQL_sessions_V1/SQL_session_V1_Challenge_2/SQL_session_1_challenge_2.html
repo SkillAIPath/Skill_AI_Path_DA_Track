@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Session 2: Geographic Risk Analysis - Complete Business Intelligence Framework</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm 2cm;
+        }
+        
+        @page :first {
+            margin-top: 1cm;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            page-break-inside: avoid;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.9em;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .header h2 {
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-weight: normal;
+            opacity: 0.95;
+        }
+        
+        .header p {
+            font-size: 1.0em;
+            opacity: 0.9;
+            margin: 5px 0;
+        }
+        
+        .crisis-alert {
+            background: #ff4444;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+            orphans: 3;
+            widows: 3;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 6px;
+            page-break-after: avoid;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            font-size: 1.2em;
+            margin: 15px 0 10px 0;
+            page-break-after: avoid;
+        }
+        
+        .section h4 {
+            color: #2980b9;
+            font-size: 1.0em;
+            margin: 12px 0 6px 0;
+            page-break-after: avoid;
+        }
+        
+        .business-question {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .objective-box {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            border: 1px solid #4a5568;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.4;
+            overflow-x: auto;
+            white-space: pre;
+            page-break-inside: avoid;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .output-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 10px;
+            page-break-inside: avoid;
+        }
+        
+        .output-table th {
+            background: #34495e;
+            color: white;
+            padding: 8px 6px;
+            text-align: left;
+            border: 1px solid #2c3e50;
+            font-weight: bold;
+            font-size: 10px;
+        }
+        
+        .output-table td {
+            padding: 6px;
+            border: 1px solid #bdc3c7;
+            background: white;
+            font-size: 10px;
+            line-height: 1.3;
+        }
+        
+        .output-table tr:nth-child(even) td {
+            background: #f8f9fa;
+        }
+        
+        .learning-tip {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .learning-tip h4 {
+            color: #856404;
+            margin-bottom: 8px;
+        }
+        
+        .validation-box {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        .warning-box {
+            background: #f8d7da;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #17a2b8;
+        }
+        
+        .insights-box {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #0066cc;
+        }
+        
+        .insights-box h4 {
+            color: #0066cc;
+            margin-bottom: 8px;
+        }
+        
+        .final-output {
+            background: #e6f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #0066cc;
+            page-break-inside: avoid;
+        }
+        
+        .summary-section {
+            background: #f0f8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #27ae60;
+            page-break-inside: avoid;
+        }
+        
+        .summary-section h2 {
+            color: #2d5a2d;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 8px;
+        }
+        
+        .breakdown-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .breakdown-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .breakdown-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .code-comment {
+            color: #a0aec0;
+            font-style: italic;
+        }
+        
+        .sql-keyword {
+            color: #63b3ed;
+            font-weight: bold;
+        }
+        
+        .sql-function {
+            color: #f687b3;
+            font-weight: bold;
+        }
+        
+        .sql-string {
+            color: #68d391;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        ul, ol {
+            margin-left: 18px;
+            margin-bottom: 12px;
+        }
+        
+        li {
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        
+        p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        strong {
+            font-weight: 600;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 12px;
+            color: #6c757d;
+            font-size: 10px;
+            border-top: 1px solid #dee2e6;
+            page-break-inside: avoid;
+        }
+        
+        @media print {
+            body {
+                font-size: 12px;
+                line-height: 1.4;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .section {
+                margin-bottom: 15px;
+            }
+            
+            .code-block {
+                font-size: 10px;
+                page-break-inside: avoid;
+            }
+            
+            .header {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .crisis-alert {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .output-table {
+                font-size: 9px;
+                page-break-inside: avoid;
+            }
+            
+            .page-break {
+                page-break-before: always !important;
+            }
+            
+            .business-question,
+            .objective-box,
+            .learning-tip,
+            .validation-box,
+            .warning-box,
+            .info-box,
+            .insights-box {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                page-break-inside: avoid;
+            }
+            
+            h1, h2, h3, h4 {
+                page-break-after: avoid;
+            }
+            
+            .breakdown-list {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌍 SQL SESSION 2: GEOGRAPHIC RISK ANALYSIS</h1>
+        <h2>Advanced Multi-Table Joins & Business Intelligence</h2>
+        <p>"Which cities are bleeding money?" - Complete Step-by-Step Geographic Intelligence Framework</p>
+    </div>
+
+    <div class="crisis-alert">
+        🚨 CRITICAL FINDING: Geographic analysis reveals 35-50% default rates across multiple cities - systematic crisis confirmed
+    </div>
+
+    <div class="business-question">
+        <h3>📋 BUSINESS QUESTION: "Which cities are bleeding money?"</h3>
+        <p><strong>Query Objective:</strong> Identify geographic concentrations of defaults to prioritize emergency collection efforts and resource allocation for maximum crisis impact reduction</p>
+        <p><strong>Executive Context:</strong> Following Session 1's portfolio confirmation (11% default rate, ₹24.2 Cr losses), board demands city-level analysis for targeted intervention strategy</p>
+        <p><strong>Business Impact:</strong> Geographic intelligence will determine ₹5-10 crore collection resource deployment across India</p>
+    </div>
+
+    <div class="section">
+        <h2>🎯 SESSION LEARNING OBJECTIVES</h2>
+        
+        <div class="objective-box">
+            <h3>🎯 Business Intelligence Goals</h3>
+            <ul>
+                <li><strong>Crisis Geography:</strong> Map where defaults are concentrated geographically for targeted intervention</li>
+                <li><strong>Resource Prioritization:</strong> Rank cities by financial impact and default rates for collection team deployment</li>
+                <li><strong>Risk Patterns:</strong> Identify if crisis is city-tier specific or systemic across geography</li>
+                <li><strong>Action Classifications:</strong> Create automated priority levels for executive decision-making</li>
+                <li><strong>State-Level Intelligence:</strong> Understand regional patterns for regulatory compliance</li>
+            </ul>
+        </div>
+
+        <div class="objective-box">
+            <h3>🔧 Advanced SQL Skills Development</h3>
+            <ul>
+                <li><strong>Normalized Schema Mastery:</strong> Complex 4-table joins across dimension and fact tables</li>
+                <li><strong>Multi-Level Aggregations:</strong> City and state-level rollups with conditional logic</li>
+                <li><strong>Geographic Intelligence:</strong> Tier-based analysis with automated risk classifications</li>
+                <li><strong>Advanced CASE Logic:</strong> Nested business rules for automated decision-making</li>
+                <li><strong>Executive Reporting:</strong> Crore presentation and strategic action recommendations</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🏢 BUSINESS CONTEXT - Understanding Geographic Risk in Education Finance</h2>
+        
+        <div class="objective-box">
+            <h3>How Geography Impacts EduFin's Revenue Model:</h3>
+            <ul>
+                <li><strong>City Tier Economics:</strong> Tier1 cities = higher loan amounts but higher competition</li>
+                <li><strong>Regional Employment Patterns:</strong> Government job concentrations affect repayment reliability</li>
+                <li><strong>Educational Infrastructure:</strong> Institution quality correlates with student success and loan performance</li>
+                <li><strong>Collection Efficiency:</strong> Urban areas = easier recovery, rural areas = higher collection costs</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h3>How Geographic Concentration Creates Risk:</h3>
+            <ul>
+                <li><strong>Local Economic Shocks:</strong> Factory closures, natural disasters affecting entire cities</li>
+                <li><strong>Regulatory Changes:</strong> State-specific education policies impacting loan demand</li>
+                <li><strong>Institutional Failures:</strong> College closures affecting all students in that city</li>
+                <li><strong>Collection Challenges:</strong> Remote locations requiring expensive recovery efforts</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>Geographic Risk Benchmarks - What "Healthy" Looks Like:</h3>
+            <ul>
+                <li><strong>City-Level Default Rate:</strong> <8% healthy, 8-12% elevated, >12% crisis intervention required</li>
+                <li><strong>Geographic Concentration:</strong> No single city should represent >5% of total portfolio</li>
+                <li><strong>State-Level Risk:</strong> No state should exceed 15% default rate due to regulatory attention</li>
+                <li><strong>Recovery Efficiency:</strong> Collection costs should not exceed 20% of recovered amount by geography</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🏗️ NORMALIZED SCHEMA ARCHITECTURE</h2>
+        
+        <div class="info-box">
+            <h3>Understanding EduFin's Geographic Data Structure</h3>
+            <ul>
+                <li><strong>dim_state:</strong> Master state dimension (state_id, state_name, region)</li>
+                <li><strong>dim_city:</strong> City dimension linked to states (city_id, city_name, state_id, tier_classification)</li>
+                <li><strong>customers:</strong> Customer master linked to cities (customer_id, city_id, personal_details)</li>
+                <li><strong>loans:</strong> Loan transactions (loan_id, customer_id, institution_id, amounts, status)</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <h3>Why This Normalized Structure Matters for Analysis</h3>
+            <ul>
+                <li><strong>Zero Redundancy:</strong> City/state names stored once, referenced via foreign keys</li>
+                <li><strong>Clean Aggregation:</strong> No data duplication affecting calculations</li>
+                <li><strong>Referential Integrity:</strong> Guaranteed data consistency across geographic dimensions</li>
+                <li><strong>Performance Benefits:</strong> Proper indexing on foreign keys enables fast geographic analysis</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🧩 STEP-BY-STEP GEOGRAPHIC ANALYSIS</h2>
+        
+        <h3>STEP 2A: Geographic Schema Exploration</h3>
+        <p><strong>Analytical Purpose:</strong> Understand our geographic presence and customer distribution before diving into risk analysis.</p>
+        
+        <div class="code-block"><span class="code-comment">-- Step 2A: Geographic presence mapping with normalized schema</span>
+<span class="code-comment">-- BUSINESS OBJECTIVE: Understand our market footprint before risk analysis</span>
+<span class="code-comment">-- ANALYST MINDSET: Always map your data landscape before complex analysis</span>
+
+<span class="sql-keyword">SELECT</span> <span class="sql-keyword">TOP</span> 15
+    dc.city_name,
+    ds.state_name,
+    ds.region,
+    dc.tier_classification,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> c.customer_id) <span class="sql-keyword">AS</span> customer_count,
+    <span class="sql-function">COUNT</span>(l.loan_id) <span class="sql-keyword">AS</span> total_loans,
+    
+    <span class="code-comment">-- Geographic penetration indicator</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> c.customer_id) >= 30 <span class="sql-keyword">THEN</span> <span class="sql-string">'🟢 High Penetration'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> c.customer_id) >= 15 <span class="sql-keyword">THEN</span> <span class="sql-string">'🟡 Medium Penetration'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'🟠 Low Penetration'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> market_presence
+
+<span class="sql-keyword">FROM</span> dim_city dc
+    <span class="sql-keyword">INNER JOIN</span> dim_state ds 
+        <span class="sql-keyword">ON</span> dc.state_id = ds.state_id
+    <span class="sql-keyword">INNER JOIN</span> customers c 
+        <span class="sql-keyword">ON</span> dc.city_id = c.city_id
+    <span class="sql-keyword">INNER JOIN</span> loans l 
+        <span class="sql-keyword">ON</span> c.customer_id = l.customer_id
+<span class="sql-keyword">WHERE</span> 
+    l.disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+<span class="sql-keyword">GROUP BY</span> 
+    dc.city_name, 
+    ds.state_name, 
+    ds.region,
+    dc.tier_classification
+<span class="sql-keyword">ORDER BY</span> 
+    customer_count <span class="sql-keyword">DESC</span>, 
+    total_loans <span class="sql-keyword">DESC</span>;</div>
+
+        <h4>Expected Output (EduFin Geographic Dataset):</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>city_name</th>
+                    <th>state_name</th>
+                    <th>region</th>
+                    <th>tier_classification</th>
+                    <th>customer_count</th>
+                    <th>total_loans</th>
+                    <th>market_presence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bhopal Wada</td>
+                    <td>Madhya Pradesh</td>
+                    <td>Central</td>
+                    <td>Tier2</td>
+                    <td>34</td>
+                    <td>57</td>
+                    <td>🟢 High Penetration</td>
+                </tr>
+                <tr>
+                    <td>Kolkata Pur</td>
+                    <td>West Bengal</td>
+                    <td>East</td>
+                    <td>Tier1</td>
+                    <td>33</td>
+                    <td>53</td>
+                    <td>🟢 High Penetration</td>
+                </tr>
+                <tr>
+                    <td>Guwahati Wada</td>
+                    <td>Assam</td>
+                    <td>Northeast</td>
+                    <td>Tier3</td>
+                    <td>32</td>
+                    <td>49</td>
+                    <td>🟢 High Penetration</td>
+                </tr>
+                <tr>
+                    <td>Hyderabad Pur</td>
+                    <td>Telangana</td>
+                    <td>South</td>
+                    <td>Tier1</td>
+                    <td>31</td>
+                    <td>48</td>
+                    <td>🟢 High Penetration</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 WHY Geographic Mapping Matters:</h4>
+            <p>Establishes our market footprint before risk analysis. Understanding where we have significant presence helps prioritize which cities' problems will have major business impact.</p>
+            
+            <h4>🔍 Geographic Distribution Insights:</h4>
+            <ul>
+                <li><strong>Multi-Regional Presence:</strong> Operations across Central, East, Northeast, South regions</li>
+                <li><strong>Tier Diversity:</strong> Portfolio spans Tier1 metros to Tier3 smaller cities</li>
+                <li><strong>Customer Concentration:</strong> 30+ customers per top city indicates significant exposure</li>
+                <li><strong>Loan Density:</strong> 1.5-1.7 loans per customer suggests repeat business success</li>
+            </ul>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Advanced SQL Learning Points:</h4>
+            <ul class="breakdown-list">
+                <li><strong>4-Table JOIN Chain:</strong> dim_city → dim_state → customers → loans</li>
+                <li><strong>COUNT(DISTINCT):</strong> Unique customers avoid double-counting with multiple loans</li>
+                <li><strong>Multi-Column GROUP BY:</strong> All non-aggregate columns must be grouped</li>
+                <li><strong>Conditional Classification:</strong> CASE WHEN for automated business categories</li>
+                <li><strong>Business Application:</strong> Geographic presence mapping drives market strategy</li>
+                <li><strong>Executive Value:</strong> Market footprint analysis justifies resource allocation decisions</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>STEP 2B: City Portfolio Concentration Analysis</h3>
+        <p><strong>Analytical Purpose:</strong> Calculate financial exposure by city to understand which locations represent highest monetary risk regardless of default rates.</p>
+        
+        <div class="code-block"><span class="code-comment">-- Step 2B: City-wise portfolio concentration with proper normalization</span>
+<span class="code-comment">-- BUSINESS OBJECTIVE: Identify cities with highest financial exposure</span>
+<span class="code-comment">-- RISK CONTEXT: High exposure cities need attention even with moderate default rates</span>
+
+<span class="sql-keyword">SELECT</span> <span class="sql-keyword">TOP</span> 15
+    dc.city_name,
+    ds.state_name,
+    ds.region,
+    dc.tier_classification,
+    
+    <span class="code-comment">-- Portfolio scale metrics</span>
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> c.customer_id) <span class="sql-keyword">AS</span> customers,
+    <span class="sql-function">COUNT</span>(l.loan_id) <span class="sql-keyword">AS</span> total_loans,
+    <span class="sql-function">SUM</span>(l.loan_amount) <span class="sql-keyword">AS</span> city_portfolio_value,
+    <span class="sql-function">ROUND</span>(<span class="sql-function">AVG</span>(l.loan_amount), 0) <span class="sql-keyword">AS</span> avg_loan_size,
+    
+    <span class="code-comment">-- Executive-friendly formatting</span>
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, <span class="sql-function">ROUND</span>(<span class="sql-function">SUM</span>(l.loan_amount) / 10000000, 2), <span class="sql-string">' Cr'</span>) <span class="sql-keyword">AS</span> portfolio_crores,
+    
+    <span class="code-comment">-- Business priority classification</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">SUM</span>(l.loan_amount) >= 15000000 <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 CRITICAL EXPOSURE'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">SUM</span>(l.loan_amount) >= 10000000 <span class="sql-keyword">THEN</span> <span class="sql-string">'🟡 HIGH EXPOSURE'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">SUM</span>(l.loan_amount) >= 5000000 <span class="sql-keyword">THEN</span> <span class="sql-string">'🟠 MODERATE EXPOSURE'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'🟢 LOW EXPOSURE'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> exposure_level
+
+<span class="sql-keyword">FROM</span> customers c
+    <span class="sql-keyword">INNER JOIN</span> dim_city dc 
+        <span class="sql-keyword">ON</span> c.city_id = dc.city_id
+    <span class="sql-keyword">INNER JOIN</span> dim_state ds 
+        <span class="sql-keyword">ON</span> dc.state_id = ds.state_id
+    <span class="sql-keyword">INNER JOIN</span> loans l 
+        <span class="sql-keyword">ON</span> c.customer_id = l.customer_id
+<span class="sql-keyword">WHERE</span> 
+    l.disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+<span class="sql-keyword">GROUP BY</span> 
+    dc.city_name, 
+    ds.state_name, 
+    ds.region,
+    dc.tier_classification
+<span class="sql-keyword">HAVING</span>
+    <span class="sql-function">COUNT</span>(l.loan_id) >= 10  <span class="code-comment">-- Focus on significant cities</span>
+<span class="sql-keyword">ORDER BY</span> 
+    city_portfolio_value <span class="sql-keyword">DESC</span>;</div>
+
+        <h4>Expected Output:</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>city_name</th>
+                    <th>state_name</th>
+                    <th>region</th>
+                    <th>tier_classification</th>
+                    <th>customers</th>
+                    <th>total_loans</th>
+                    <th>portfolio_crores</th>
+                    <th>exposure_level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dehradun Gram</td>
+                    <td>Uttarakhand</td>
+                    <td>North</td>
+                    <td>Tier3</td>
+                    <td>21</td>
+                    <td>39</td>
+                    <td>₹1.8 Cr</td>
+                    <td>🔴 CRITICAL EXPOSURE</td>
+                </tr>
+                <tr>
+                    <td>Kolkata Pur</td>
+                    <td>West Bengal</td>
+                    <td>East</td>
+                    <td>Tier1</td>
+                    <td>24</td>
+                    <td>43</td>
+                    <td>₹1.6 Cr</td>
+                    <td>🔴 CRITICAL EXPOSURE</td>
+                </tr>
+                <tr>
+                    <td>Hyderabad Pur</td>
+                    <td>Telangana</td>
+                    <td>South</td>
+                    <td>Tier1</td>
+                    <td>18</td>
+                    <td>35</td>
+                    <td>₹1.57 Cr</td>
+                    <td>🔴 CRITICAL EXPOSURE</td>
+                </tr>
+                <tr>
+                    <td>Bhopal Wada</td>
+                    <td>Madhya Pradesh</td>
+                    <td>Central</td>
+                    <td>Tier2</td>
+                    <td>23</td>
+                    <td>36</td>
+                    <td>₹1.55 Cr</td>
+                    <td>🔴 CRITICAL EXPOSURE</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 WHY Portfolio Concentration Analysis is Critical:</h4>
+            <p>High exposure cities require attention even with moderate default rates due to absolute loss potential. These cities justify dedicated collection teams regardless of default percentages.</p>
+            
+            <h4>🔍 Portfolio Concentration Insights:</h4>
+            <ul>
+                <li><strong>Cross-Tier Risk:</strong> Both Tier1 (Kolkata, Hyderabad) and Tier3 (Dehradun) cities show critical exposure</li>
+                <li><strong>Regional Spread:</strong> Critical exposure across North, East, South, Central regions</li>
+                <li><strong>Customer Density:</strong> 1.8 loans per customer indicates successful repeat business model</li>
+                <li><strong>Resource Justification:</strong> ₹1.5+ Cr per city justifies dedicated collection resources</li>
+            </ul>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Advanced SQL Learning Points:</h4>
+            <ul class="breakdown-list">
+                <li><strong>JOIN Sequence:</strong> customers → dim_city → dim_state for clean geographic data</li>
+                <li><strong>HAVING vs WHERE:</strong> HAVING filters after GROUP BY aggregation</li>
+                <li><strong>Business Thresholds:</strong> >=10 loans ensures statistical significance</li>
+                <li><strong>CONCAT Formatting:</strong> Executive-ready crore presentation for Indian business context</li>
+                <li><strong>Business Application:</strong> Portfolio concentration analysis drives resource deployment</li>
+                <li><strong>Executive Value:</strong> High exposure cities justify dedicated collection teams regardless of default rates</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>STEP 2C: Geographic Default Rate Analysis</h3>
+        <p><strong>Analytical Purpose:</strong> Calculate city-wise default rates to identify geographic risk hotspots requiring immediate intervention.</p>
+        
+        <div class="code-block"><span class="code-comment">-- Step 2C: City-wise default rate analysis with risk classification</span>
+<span class="code-comment">-- BUSINESS OBJECTIVE: Identify cities with dangerous default rate concentrations</span>
+<span class="code-comment">-- CRISIS CONTEXT: Default rates >12% indicate systematic operational problems</span>
+
+<span class="sql-keyword">SELECT</span> <span class="sql-keyword">TOP</span> 15
+    dc.city_name,
+    ds.state_name,
+    ds.region,
+    dc.tier_classification,
+    
+    <span class="code-comment">-- Portfolio and risk metrics</span>
+    <span class="sql-function">COUNT</span>(l.loan_id) <span class="sql-keyword">AS</span> total_loans,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> defaulted_loans,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> overdue_loans,
+    
+    <span class="code-comment">-- Critical risk calculations</span>
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+        <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0), 2
+    ) <span class="sql-keyword">AS</span> default_rate,
+    
+    <span class="sql-function">ROUND</span>(
+        (<span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) + 
+         <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>)) * 100.0 / 
+        <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0), 2
+    ) <span class="sql-keyword">AS</span> total_at_risk_rate,
+    
+    <span class="code-comment">-- Executive risk classification</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 40
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 SHUTDOWN REQUIRED'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 25
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 CRITICAL INTERVENTION'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 15
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🟡 HIGH PRIORITY'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 8
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🟠 MONITOR CLOSELY'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'🟢 ACCEPTABLE RISK'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> risk_level
+
+<span class="sql-keyword">FROM</span> customers c
+    <span class="sql-keyword">INNER JOIN</span> dim_city dc 
+        <span class="sql-keyword">ON</span> c.city_id = dc.city_id
+    <span class="sql-keyword">INNER JOIN</span> dim_state ds 
+        <span class="sql-keyword">ON</span> dc.state_id = ds.state_id
+    <span class="sql-keyword">INNER JOIN</span> loans l 
+        <span class="sql-keyword">ON</span> c.customer_id = l.customer_id
+<span class="sql-keyword">WHERE</span> 
+    l.disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+<span class="sql-keyword">GROUP BY</span> 
+    dc.city_name, 
+    ds.state_name, 
+    ds.region,
+    dc.tier_classification
+<span class="sql-keyword">HAVING</span> 
+    <span class="sql-function">COUNT</span>(l.loan_id) >= 10  <span class="code-comment">-- Statistical significance threshold</span>
+<span class="sql-keyword">ORDER BY</span> 
+    default_rate <span class="sql-keyword">DESC</span>, 
+    total_at_risk_rate <span class="sql-keyword">DESC</span>;</div>
+
+        <h4>Expected Output:</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>city_name</th>
+                    <th>state_name</th>
+                    <th>region</th>
+                    <th>tier_classification</th>
+                    <th>total_loans</th>
+                    <th>defaulted_loans</th>
+                    <th>default_rate</th>
+                    <th>total_at_risk_rate</th>
+                    <th>risk_level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Kochi Pur</td>
+                    <td>Kerala</td>
+                    <td>South</td>
+                    <td>Tier2</td>
+                    <td>10</td>
+                    <td>5</td>
+                    <td>50.00</td>
+                    <td>60.00</td>
+                    <td>🔴 SHUTDOWN REQUIRED</td>
+                </tr>
+                <tr>
+                    <td>Jammu Bad</td>
+                    <td>Jammu and Kashmir</td>
+                    <td>North</td>
+                    <td>Tier3</td>
+                    <td>14</td>
+                    <td>6</td>
+                    <td>42.86</td>
+                    <td>50.00</td>
+                    <td>🔴 SHUTDOWN REQUIRED</td>
+                </tr>
+                <tr>
+                    <td>Nashik Ganj</td>
+                    <td>Maharashtra</td>
+                    <td>West</td>
+                    <td>Tier2</td>
+                    <td>14</td>
+                    <td>5</td>
+                    <td>35.71</td>
+                    <td>42.86</td>
+                    <td>🔴 CRITICAL INTERVENTION</td>
+                </tr>
+                <tr>
+                    <td>Chennai Ganj</td>
+                    <td>Tamil Nadu</td>
+                    <td>South</td>
+                    <td>Tier2</td>
+                    <td>14</td>
+                    <td>5</td>
+                    <td>35.71</td>
+                    <td>42.86</td>
+                    <td>🔴 CRITICAL INTERVENTION</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 WHY Default Rate Analysis is Mission-Critical:</h4>
+            <p>50% default rate in Kochi Pur indicates complete operational breakdown. These rates are 4-6x the acceptable 8% threshold, representing systematic crisis requiring immediate shutdown and investigation.</p>
+            
+            <h4>🔍 Geographic Risk Patterns Revealed:</h4>
+            <ul>
+                <li><strong>Crisis Universality:</strong> All analyzed cities require immediate intervention (35-50% default rates)</li>
+                <li><strong>Multi-Regional Crisis:</strong> South (Kerala, Tamil Nadu), North (J&K), West (Maharashtra) all affected</li>
+                <li><strong>Tier-Agnostic Problem:</strong> Both Tier2 and Tier3 cities showing extreme default rates</li>
+                <li><strong>Systematic Issues:</strong> 35-50% rates indicate operational failures, not market conditions</li>
+            </ul>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Advanced SQL Learning Points:</h4>
+            <ul class="breakdown-list">
+                <li><strong>CASE WHEN Counting:</strong> Conditional aggregation for business categories</li>
+                <li><strong>NULLIF Protection:</strong> Prevents division by zero in percentage calculations</li>
+                <li><strong>Nested CASE Logic:</strong> Multi-level business rule implementation</li>
+                <li><strong>Complex HAVING:</strong> Statistical significance filtering after aggregation</li>
+                <li><strong>Business Application:</strong> Risk classification drives operational intervention decisions</li>
+                <li><strong>Executive Value:</strong> Automated risk levels enable immediate crisis response without manual analysis</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h3>STEP 2D: Financial Loss Quantification by Geography</h3>
+        <p><strong>Analytical Purpose:</strong> Calculate actual monetary losses by city to prioritize recovery efforts by financial impact rather than just percentages.</p>
+        
+        <div class="code-block"><span class="code-comment">-- Step 2D: City-wise financial impact analysis with recovery prioritization</span>
+<span class="code-comment">-- BUSINESS OBJECTIVE: Quantify actual monetary losses for resource allocation</span>
+<span class="code-comment">-- EXECUTIVE FOCUS: ₹ amount drives collection team deployment decisions</span>
+
+<span class="sql-keyword">SELECT</span> <span class="sql-keyword">TOP</span> 15
+    dc.city_name,
+    ds.state_name,
+    ds.region,
+    dc.tier_classification,
+    
+    <span class="code-comment">-- Portfolio and loss metrics</span>
+    <span class="sql-function">COUNT</span>(l.loan_id) <span class="sql-keyword">AS</span> total_loans,
+    <span class="sql-function">SUM</span>(l.loan_amount) <span class="sql-keyword">AS</span> total_portfolio,
+    
+    <span class="code-comment">-- Financial loss calculations</span>
+    <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> total_losses,
+    <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> at_risk_amount,
+    
+    <span class="code-comment">-- Executive-ready formatting</span>
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, <span class="sql-function">ROUND</span>(
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) / 10000000, 2
+    ), <span class="sql-string">' Cr'</span>) <span class="sql-keyword">AS</span> losses_crores,
+    
+    <span class="code-comment">-- Loss percentage of city portfolio</span>
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) * 100.0 / 
+        <span class="sql-function">NULLIF</span>(<span class="sql-function">SUM</span>(l.loan_amount), 0), 2
+    ) <span class="sql-keyword">AS</span> loss_percentage_of_portfolio,
+    
+    <span class="code-comment">-- Recovery priority classification</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) >= 3000000
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 PRIORITY 1: Senior Collection Team'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) >= 2000000
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🟡 PRIORITY 2: Dedicated Agent'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) >= 1000000
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🟠 PRIORITY 3: Enhanced Monitoring'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'🟢 STANDARD: Regular Process'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> recovery_priority
+
+<span class="sql-keyword">FROM</span> customers c
+    <span class="sql-keyword">INNER JOIN</span> dim_city dc 
+        <span class="sql-keyword">ON</span> c.city_id = dc.city_id
+    <span class="sql-keyword">INNER JOIN</span> dim_state ds 
+        <span class="sql-keyword">ON</span> dc.state_id = ds.state_id
+    <span class="sql-keyword">INNER JOIN</span> loans l 
+        <span class="sql-keyword">ON</span> c.customer_id = l.customer_id
+<span class="sql-keyword">WHERE</span> 
+    l.disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+<span class="sql-keyword">GROUP BY</span> 
+    dc.city_name, 
+    ds.state_name, 
+    ds.region,
+    dc.tier_classification
+<span class="sql-keyword">HAVING</span> 
+    <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) > 0  <span class="code-comment">-- Only cities with actual losses</span>
+<span class="sql-keyword">ORDER BY</span> 
+    total_losses <span class="sql-keyword">DESC</span>;</div>
+
+        <h4>Expected Output:</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>city_name</th>
+                    <th>state_name</th>
+                    <th>region</th>
+                    <th>tier_classification</th>
+                    <th>total_loans</th>
+                    <th>losses_crores</th>
+                    <th>loss_percentage_of_portfolio</th>
+                    <th>recovery_priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shimla Pur</td>
+                    <td>Himachal Pradesh</td>
+                    <td>North</td>
+                    <td>Tier3</td>
+                    <td>22</td>
+                    <td>₹0.36 Cr</td>
+                    <td>38.46</td>
+                    <td>🔴 PRIORITY 1: Senior Collection Team</td>
+                </tr>
+                <tr>
+                    <td>Dehradun Khand</td>
+                    <td>Uttarakhand</td>
+                    <td>North</td>
+                    <td>Tier3</td>
+                    <td>25</td>
+                    <td>₹0.30 Cr</td>
+                    <td>26.95</td>
+                    <td>🔴 PRIORITY 1: Senior Collection Team</td>
+                </tr>
+                <tr>
+                    <td>Guwahati Wada</td>
+                    <td>Assam</td>
+                    <td>Northeast</td>
+                    <td>Tier3</td>
+                    <td>30</td>
+                    <td>₹0.30 Cr</td>
+                    <td>26.32</td>
+                    <td>🔴 PRIORITY 1: Senior Collection Team</td>
+                </tr>
+                <tr>
+                    <td>Kochi Kot</td>
+                    <td>Kerala</td>
+                    <td>South</td>
+                    <td>Tier2</td>
+                    <td>23</td>
+                    <td>₹0.27 Cr</td>
+                    <td>28.05</td>
+                    <td>🔴 PRIORITY 1: Senior Collection Team</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 WHY Financial Loss Quantification Drives Strategy:</h4>
+            <p>₹0.36 crore loss from single city (Shimla Pur) justifies immediate senior team deployment. Different cities from high default rate list shows loan amount variations impact total financial damage.</p>
+            
+            <h4>🔍 Financial Loss Intelligence:</h4>
+            <ul>
+                <li><strong>Top Loss City:</strong> Shimla Pur ₹0.36 Cr (38.46% of city portfolio lost)</li>
+                <li><strong>Regional Pattern:</strong> North region cities (Shimla, Dehradun) dominate loss rankings</li>
+                <li><strong>Recovery Opportunity:</strong> Even 50% recovery from top 5 cities = ₹0.8+ Cr saved</li>
+                <li><strong>Tier3 Dominance:</strong> Smaller cities showing highest absolute losses despite lower loan sizes</li>
+            </ul>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ Advanced SQL Learning Points:</h4>
+            <ul class="breakdown-list">
+                <li><strong>Conditional SUM:</strong> CASE WHEN inside SUM for selective financial totaling</li>
+                <li><strong>Executive Formatting:</strong> Division by 10000000 for Indian crore context</li>
+                <li><strong>HAVING with Conditions:</strong> Filter only cities with actual financial losses</li>
+                <li><strong>Business Thresholds:</strong> ₹30L+ losses trigger senior collection team deployment</li>
+                <li><strong>Business Application:</strong> Financial loss quantification drives collection team assignment</li>
+                <li><strong>Executive Value:</strong> Monetary impact analysis justifies collection resource investment</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>STEP 2E: Executive Geographic Dashboard with CTE</h3>
+        <p><strong>Analytical Purpose:</strong> Create board-ready comprehensive geographic analysis using CTE structure for complex calculation organization.</p>
+        
+        <div class="code-block"><span class="code-comment">-- Step 2E: Executive Geographic Dashboard using CTE methodology</span>
+<span class="code-comment">-- BUSINESS OBJECTIVE: Comprehensive executive summary combining all geographic intelligence</span>
+<span class="code-comment">-- CTE ADVANTAGE: Separates complex calculations from presentation logic for readability</span>
+
+<span class="sql-keyword">WITH</span> geographic_portfolio_base <span class="sql-keyword">AS</span> (
+    <span class="code-comment">-- Foundation CTE: Basic geographic portfolio aggregation</span>
+    <span class="sql-keyword">SELECT</span> 
+        dc.city_name,
+        ds.state_name,
+        ds.region,
+        dc.tier_classification,
+        
+        <span class="code-comment">-- Portfolio scale metrics</span>
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> c.customer_id) <span class="sql-keyword">AS</span> customers,
+        <span class="sql-function">COUNT</span>(l.loan_id) <span class="sql-keyword">AS</span> total_loans,
+        <span class="sql-function">SUM</span>(l.loan_amount) <span class="sql-keyword">AS</span> total_portfolio_value,
+        
+        <span class="code-comment">-- Risk categorization counts</span>
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Active'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> active_loans,
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> defaulted_loans,
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> overdue_loans,
+        
+        <span class="code-comment">-- Financial impact calculations</span>
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> total_default_value,
+        <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> overdue_portfolio_value
+        
+    <span class="sql-keyword">FROM</span> customers c
+        <span class="sql-keyword">INNER JOIN</span> dim_city dc <span class="sql-keyword">ON</span> c.city_id = dc.city_id
+        <span class="sql-keyword">INNER JOIN</span> dim_state ds <span class="sql-keyword">ON</span> dc.state_id = ds.state_id
+        <span class="sql-keyword">INNER JOIN</span> loans l <span class="sql-keyword">ON</span> c.customer_id = l.customer_id
+    <span class="sql-keyword">WHERE</span> 
+        l.disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+    <span class="sql-keyword">GROUP BY</span> 
+        dc.city_name, ds.state_name, ds.region, dc.tier_classification
+),
+geographic_risk_intelligence <span class="sql-keyword">AS</span> (
+    <span class="code-comment">-- Advanced CTE: Risk calculations and classifications</span>
+    <span class="sql-keyword">SELECT</span> 
+        *,
+        <span class="code-comment">-- Risk percentage calculations</span>
+        <span class="sql-function">ROUND</span>(
+            defaulted_loans * 100.0 / <span class="sql-function">NULLIF</span>(total_loans, 0), 2
+        ) <span class="sql-keyword">AS</span> default_rate,
+        
+        <span class="sql-function">ROUND</span>(
+            (defaulted_loans + overdue_loans) * 100.0 / <span class="sql-function">NULLIF</span>(total_loans, 0), 2
+        ) <span class="sql-keyword">AS</span> total_at_risk_rate,
+        
+        <span class="code-comment">-- Executive risk classification</span>
+        <span class="sql-keyword">CASE</span> 
+            <span class="sql-keyword">WHEN</span> defaulted_loans * 100.0 / <span class="sql-function">NULLIF</span>(total_loans, 0) >= 40
+            <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 SHUTDOWN REQUIRED'</span>
+            <span class="sql-keyword">WHEN</span> defaulted_loans * 100.0 / <span class="sql-function">NULLIF</span>(total_loans, 0) >= 25
+            <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 CRITICAL INTERVENTION'</span>
+            <span class="sql-keyword">WHEN</span> defaulted_loans * 100.0 / <span class="sql-function">NULLIF</span>(total_loans, 0) >= 15
+            <span class="sql-keyword">THEN</span> <span class="sql-string">'🟡 HIGH PRIORITY'</span>
+            <span class="sql-keyword">WHEN</span> defaulted_loans * 100.0 / <span class="sql-function">NULLIF</span>(total_loans, 0) >= 8
+            <span class="sql-keyword">THEN</span> <span class="sql-string">'🟠 MONITOR CLOSELY'</span>
+            <span class="sql-keyword">ELSE</span> <span class="sql-string">'🟢 ACCEPTABLE RISK'</span>
+        <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> risk_level,
+        
+        <span class="code-comment">-- Collection priority classification</span>
+        <span class="sql-keyword">CASE</span> 
+            <span class="sql-keyword">WHEN</span> total_default_value >= 3000000
+            <span class="sql-keyword">THEN</span> <span class="sql-string">'PRIORITY 1: Senior Collection Team'</span>
+            <span class="sql-keyword">WHEN</span> total_default_value >= 2000000
+            <span class="sql-keyword">THEN</span> <span class="sql-string">'PRIORITY 2: Dedicated Agent'</span>
+            <span class="sql-keyword">WHEN</span> total_default_value >= 1000000
+            <span class="sql-keyword">THEN</span> <span class="sql-string">'PRIORITY 3: Enhanced Monitoring'</span>
+            <span class="sql-keyword">ELSE</span> <span class="sql-string">'STANDARD: Regular Process'</span>
+        <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> collection_priority
+        
+    <span class="sql-keyword">FROM</span> geographic_portfolio_base
+    <span class="sql-keyword">WHERE</span> 
+        total_loans >= 10  <span class="code-comment">-- Statistical significance threshold</span>
+)
+<span class="sql-keyword">SELECT</span> 
+    <span class="code-comment">-- Executive summary metrics (board-ready format)</span>
+    city_name,
+    state_name,
+    region,
+    tier_classification,
+    
+    <span class="code-comment">-- Portfolio scale presentation</span>
+    <span class="sql-function">CONCAT</span>(customers, <span class="sql-string">' customers'</span>) <span class="sql-keyword">AS</span> customer_base,
+    <span class="sql-function">CONCAT</span>(total_loans, <span class="sql-string">' loans'</span>) <span class="sql-keyword">AS</span> loan_portfolio,
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, <span class="sql-function">ROUND</span>(total_portfolio_value / 10000000, 2), <span class="sql-string">' Cr'</span>) <span class="sql-keyword">AS</span> portfolio_value,
+    
+    <span class="code-comment">-- Risk metrics presentation</span>
+    <span class="sql-function">CONCAT</span>(default_rate, <span class="sql-string">'%'</span>) <span class="sql-keyword">AS</span> default_rate_percent,
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, <span class="sql-function">ROUND</span>(total_default_value / 10000000, 2), <span class="sql-string">' Cr'</span>) <span class="sql-keyword">AS</span> confirmed_losses,
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, <span class="sql-function">ROUND</span>(overdue_portfolio_value / 10000000, 2), <span class="sql-string">' Cr'</span>) <span class="sql-keyword">AS</span> at_risk_amount,
+    
+    <span class="code-comment">-- Executive classifications</span>
+    risk_level,
+    collection_priority,
+    
+    <span class="code-comment">-- Board action recommendation</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> risk_level <span class="sql-keyword">LIKE</span> <span class="sql-string">'🔴 SHUTDOWN%'</span> 
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'IMMEDIATE: Halt new lending + senior management intervention'</span>
+        <span class="sql-keyword">WHEN</span> risk_level <span class="sql-keyword">LIKE</span> <span class="sql-string">'🔴 CRITICAL%'</span> 
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'URGENT: Deploy specialized collection resources'</span>
+        <span class="sql-keyword">WHEN</span> risk_level <span class="sql-keyword">LIKE</span> <span class="sql-string">'🟡 HIGH%'</span> 
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'ENHANCED: Increase collection team capacity'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'STANDARD: Continue regular monitoring protocols'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> board_recommendation
+    
+<span class="sql-keyword">FROM</span> geographic_risk_intelligence
+<span class="sql-keyword">WHERE</span> 
+    (total_default_value > 0 <span class="sql-keyword">OR</span> overdue_portfolio_value > 0)  <span class="code-comment">-- Cities with actual problems</span>
+<span class="sql-keyword">ORDER BY</span> 
+    total_default_value <span class="sql-keyword">DESC</span>, 
+    default_rate <span class="sql-keyword">DESC</span>;</div>
+
+        <div class="final-output">
+            <h2>📊 COMPREHENSIVE EXECUTIVE GEOGRAPHIC DASHBOARD</h2>
+            <table class="output-table">
+                <thead>
+                    <tr>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Region</th>
+                        <th>Customer Base</th>
+                        <th>Portfolio Value</th>
+                        <th>Default Rate</th>
+                        <th>Confirmed Losses</th>
+                        <th>Risk Level</th>
+                        <th>Collection Priority</th>
+                        <th>Board Recommendation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Shimla Pur</td>
+                        <td>Himachal Pradesh</td>
+                        <td>North</td>
+                        <td>22 customers</td>
+                        <td>₹0.93 Cr</td>
+                        <td>31.82%</td>
+                        <td>₹0.36 Cr</td>
+                        <td>🔴 CRITICAL INTERVENTION</td>
+                        <td>PRIORITY 1: Senior Collection Team</td>
+                        <td>URGENT: Deploy specialized collection resources</td>
+                    </tr>
+                    <tr>
+                        <td>Kochi Pur</td>
+                        <td>Kerala</td>
+                        <td>South</td>
+                        <td>10 customers</td>
+                        <td>₹0.45 Cr</td>
+                        <td>50.00%</td>
+                        <td>₹0.23 Cr</td>
+                        <td>🔴 SHUTDOWN REQUIRED</td>
+                        <td>PRIORITY 1: Senior Collection Team</td>
+                        <td>IMMEDIATE: Halt new lending + senior management intervention</td>
+                    </tr>
+                    <tr>
+                        <td>Dehradun Khand</td>
+                        <td>Uttarakhand</td>
+                        <td>North</td>
+                        <td>25 customers</td>
+                        <td>₹1.13 Cr</td>
+                        <td>24.00%</td>
+                        <td>₹0.30 Cr</td>
+                        <td>🟡 HIGH PRIORITY</td>
+                        <td>PRIORITY 1: Senior Collection Team</td>
+                        <td>ENHANCED: Increase collection team capacity</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="insights-box">
+                <h4>🎯 WHAT This CTE Dashboard Delivers to Executives:</h4>
+                <ul>
+                    <li><strong>Immediate Action Plan:</strong> Clear operational directives for each problematic city</li>
+                    <li><strong>Resource Allocation:</strong> Specific collection team deployment recommendations</li>
+                    <li><strong>Financial Justification:</strong> ₹0.89+ Cr confirmed losses justify immediate intervention investment</li>
+                    <li><strong>Risk Prioritization:</strong> Automated classification enabling systematic crisis response</li>
+                    <li><strong>Board-Ready Intelligence:</strong> Executive summary requiring no additional analysis</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="learning-tip">
+            <h4>✅ CTE Mastery Learning Points:</h4>
+            <ul class="breakdown-list">
+                <li><strong>CTE Structure:</strong> WITH clause separates complex calculations from presentation logic</li>
+                <li><strong>Multi-Level CTEs:</strong> Foundation → Analysis → Presentation logical progression</li>
+                <li><strong>Code Readability:</strong> Complex business logic broken into digestible components</li>
+                <li><strong>Maintenance Benefits:</strong> Easy to modify individual calculation components</li>
+                <li><strong>Business Application:</strong> Executive dashboards require clean, modular query structure</li>
+                <li><strong>Executive Value:</strong> CTE organization enables rapid query modification for changing business requirements</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🔧 COMPLETE EXECUTIVE GEOGRAPHIC DASHBOARD</h2>
+        <p>Comprehensive city-level risk analysis combining all elements for executive decision-making:</p>
+        
+        <div class="code-block"><span class="code-comment">-- STEP 2: Complete Geographic Risk Intelligence Dashboard</span>
+<span class="code-comment">-- BUSINESS OBJECTIVE: Executive geographic crisis response and resource deployment tool</span>
+<span class="code-comment">-- BOARD CONTEXT: Comprehensive city prioritization for ₹5-10 Cr collection resource allocation</span>
+
+<span class="sql-keyword">SELECT</span> <span class="sql-keyword">TOP</span> 20
+    dc.city_name,
+    ds.state_name,
+    ds.region,
+    dc.tier_classification,
+    
+    <span class="code-comment">-- Portfolio scale and composition</span>
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> c.customer_id) <span class="sql-keyword">AS</span> customers,
+    <span class="sql-function">COUNT</span>(l.loan_id) <span class="sql-keyword">AS</span> total_loans,
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, <span class="sql-function">ROUND</span>(<span class="sql-function">SUM</span>(l.loan_amount) / 10000000, 2), <span class="sql-string">' Cr'</span>) <span class="sql-keyword">AS</span> city_portfolio,
+    
+    <span class="code-comment">-- Risk assessment metrics</span>
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> defaulted_loans,
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+        <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0), 2
+    ) <span class="sql-keyword">AS</span> default_rate,
+    
+    <span class="code-comment">-- Financial impact quantification</span>
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, 
+        <span class="sql-function">ROUND</span>(
+            <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) / 10000000, 2
+        ), <span class="sql-string">' Cr'</span>
+    ) <span class="sql-keyword">AS</span> confirmed_losses,
+    
+    <span class="code-comment">-- At-risk portfolio calculation</span>
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, 
+        <span class="sql-function">ROUND</span>(
+            <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) / 10000000, 2
+        ), <span class="sql-string">' Cr'</span>
+    ) <span class="sql-keyword">AS</span> at_risk_portfolio,
+    
+    <span class="code-comment">-- Executive risk classification with operational directives</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 40
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 SHUTDOWN: Halt new lending immediately'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 25
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 CRITICAL: Deploy senior collection team'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 15
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🟡 HIGH: Enhanced collection resources'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 8
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🟠 MONITOR: Increased oversight'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'🟢 NORMAL: Standard monitoring'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> executive_action,
+    
+    <span class="code-comment">-- Board-level strategic recommendations</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) >= 10 
+             <span class="sql-keyword">AND</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+                 <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 25
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'IMMEDIATE: Senior manager + legal team deployment'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) >= 3000000
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'HIGH PRIORITY: Dedicated collection agent assignment'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 15
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'ENHANCED: Process audit + additional resources'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'STANDARD: Continue regular monitoring protocols'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> board_recommendation
+
+<span class="sql-keyword">FROM</span> customers c
+    <span class="sql-keyword">INNER JOIN</span> dim_city dc 
+        <span class="sql-keyword">ON</span> c.city_id = dc.city_id
+    <span class="sql-keyword">INNER JOIN</span> dim_state ds 
+        <span class="sql-keyword">ON</span> dc.state_id = ds.state_id
+    <span class="sql-keyword">INNER JOIN</span> loans l 
+        <span class="sql-keyword">ON</span> c.customer_id = l.customer_id
+<span class="sql-keyword">WHERE</span> 
+    l.disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+<span class="sql-keyword">GROUP BY</span> 
+    dc.city_name, 
+    ds.state_name, 
+    ds.region,
+    dc.tier_classification
+<span class="sql-keyword">HAVING</span> 
+    <span class="sql-function">COUNT</span>(l.loan_id) >= 10  <span class="code-comment">-- Focus on statistically significant cities</span>
+    <span class="sql-keyword">AND</span> (<span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) > 0 
+         <span class="sql-keyword">OR</span> <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Overdue'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) > 0)  <span class="code-comment">-- Cities with actual problems</span>
+<span class="sql-keyword">ORDER BY</span> 
+    <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">DESC</span>,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+    <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) <span class="sql-keyword">DESC</span>;</div>
+    </div>
+
+    <div class="final-output">
+        <h2>📊 EXECUTIVE GEOGRAPHIC CRISIS DASHBOARD</h2>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Region</th>
+                    <th>Tier</th>
+                    <th>Portfolio</th>
+                    <th>Default Rate</th>
+                    <th>Losses</th>
+                    <th>At Risk</th>
+                    <th>Executive Action</th>
+                    <th>Board Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shimla Pur</td>
+                    <td>Himachal Pradesh</td>
+                    <td>North</td>
+                    <td>Tier3</td>
+                    <td>₹0.93 Cr</td>
+                    <td>31.82%</td>
+                    <td>₹0.36 Cr</td>
+                    <td>₹0.12 Cr</td>
+                    <td>🔴 CRITICAL: Deploy senior collection team</td>
+                    <td>HIGH PRIORITY: Dedicated collection agent assignment</td>
+                </tr>
+                <tr>
+                    <td>Kochi Pur</td>
+                    <td>Kerala</td>
+                    <td>South</td>
+                    <td>Tier2</td>
+                    <td>₹0.45 Cr</td>
+                    <td>50.00%</td>
+                    <td>₹0.23 Cr</td>
+                    <td>₹0.05 Cr</td>
+                    <td>🔴 SHUTDOWN: Halt new lending immediately</td>
+                    <td>IMMEDIATE: Senior manager + legal team deployment</td>
+                </tr>
+                <tr>
+                    <td>Jammu Bad</td>
+                    <td>Jammu and Kashmir</td>
+                    <td>North</td>
+                    <td>Tier3</td>
+                    <td>₹0.52 Cr</td>
+                    <td>42.86%</td>
+                    <td>₹0.22 Cr</td>
+                    <td>₹0.04 Cr</td>
+                    <td>🔴 SHUTDOWN: Halt new lending immediately</td>
+                    <td>IMMEDIATE: Senior manager + legal team deployment</td>
+                </tr>
+                <tr>
+                    <td>Dehradun Khand</td>
+                    <td>Uttarakhand</td>
+                    <td>North</td>
+                    <td>Tier3</td>
+                    <td>₹1.13 Cr</td>
+                    <td>24.00%</td>
+                    <td>₹0.30 Cr</td>
+                    <td>₹0.15 Cr</td>
+                    <td>🟡 HIGH: Enhanced collection resources</td>
+                    <td>ENHANCED: Process audit + additional resources</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🎯 EXECUTIVE SUMMARY - GEOGRAPHIC CRISIS CONFIRMED:</h4>
+            <p><strong>This dashboard provides immediate actionable intelligence for geographic crisis response.</strong> Analysis reveals systematic operational failures across multiple states requiring immediate executive intervention.</p>
+            
+            <h4>🔍 CRITICAL BUSINESS INSIGHTS:</h4>
+            <ul>
+                <li><strong>Crisis Universality:</strong> 100% of significant cities show default rates >20% (vs 8% healthy threshold)</li>
+                <li><strong>Multi-State Impact:</strong> Crisis spans North (HP, UK, J&K) and South (Kerala) regions</li>
+                <li><strong>Financial Devastation:</strong> ₹1.11+ Cr confirmed losses from just top 4 cities</li>
+                <li><strong>Operational Breakdown:</strong> 50% default rate in Kochi indicates complete system failure</li>
+                <li><strong>Immediate Shutdowns Required:</strong> 50% of analyzed cities need lending halt + investigation</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h2>🗺️ STATE-LEVEL STRATEGIC INTELLIGENCE</h2>
+        <p>Regional rollup analysis for regulatory compliance and state-level resource allocation:</p>
+        
+        <div class="code-block"><span class="code-comment">-- BONUS: State-level rollup for regulatory reporting and regional strategy</span>
+<span class="code-comment">-- BUSINESS OBJECTIVE: Regional risk patterns for state-level intervention strategies</span>
+<span class="code-comment">-- REGULATORY CONTEXT: State banking authorities may require regional explanations</span>
+
+<span class="sql-keyword">SELECT</span> 
+    ds.state_name,
+    ds.region,
+    
+    <span class="code-comment">-- State portfolio aggregation</span>
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> dc.city_id) <span class="sql-keyword">AS</span> cities_with_operations,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> c.customer_id) <span class="sql-keyword">AS</span> total_customers,
+    <span class="sql-function">COUNT</span>(l.loan_id) <span class="sql-keyword">AS</span> total_loans,
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, <span class="sql-function">ROUND</span>(<span class="sql-function">SUM</span>(l.loan_amount) / 10000000, 2), <span class="sql-string">' Cr'</span>) <span class="sql-keyword">AS</span> state_portfolio,
+    
+    <span class="code-comment">-- State-level risk metrics</span>
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> defaulted_loans,
+    <span class="sql-function">ROUND</span>(
+        <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+        <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0), 2
+    ) <span class="sql-keyword">AS</span> state_default_rate,
+    
+    <span class="code-comment">-- Financial impact by state</span>
+    <span class="sql-function">CONCAT</span>(<span class="sql-string">'₹'</span>, 
+        <span class="sql-function">ROUND</span>(
+            <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) / 10000000, 2
+        ), <span class="sql-string">' Cr'</span>
+    ) <span class="sql-keyword">AS</span> state_losses,
+    
+    <span class="code-comment">-- Regional risk classification</span>
+    <span class="sql-keyword">CASE</span> 
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 20
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🔴 STATE CRISIS: Regulatory attention required'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 12
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🟡 STATE RISK: Enhanced monitoring'</span>
+        <span class="sql-keyword">WHEN</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) * 100.0 / 
+             <span class="sql-function">NULLIF</span>(<span class="sql-function">COUNT</span>(l.loan_id), 0) >= 8
+        <span class="sql-keyword">THEN</span> <span class="sql-string">'🟠 STATE WATCH: Process review needed'</span>
+        <span class="sql-keyword">ELSE</span> <span class="sql-string">'🟢 STATE NORMAL: Standard operations'</span>
+    <span class="sql-keyword">END</span> <span class="sql-keyword">AS</span> state_risk_level
+
+<span class="sql-keyword">FROM</span> dim_state ds
+    <span class="sql-keyword">INNER JOIN</span> dim_city dc 
+        <span class="sql-keyword">ON</span> ds.state_id = dc.state_id
+    <span class="sql-keyword">INNER JOIN</span> customers c 
+        <span class="sql-keyword">ON</span> dc.city_id = c.city_id
+    <span class="sql-keyword">INNER JOIN</span> loans l 
+        <span class="sql-keyword">ON</span> c.customer_id = l.customer_id
+<span class="sql-keyword">WHERE</span> 
+    l.disbursement_date <span class="sql-keyword">IS NOT NULL</span>
+<span class="sql-keyword">GROUP BY</span> 
+    ds.state_name, 
+    ds.region
+<span class="sql-keyword">HAVING</span> 
+    <span class="sql-function">COUNT</span>(l.loan_id) >= 20  <span class="code-comment">-- States with significant operations</span>
+<span class="sql-keyword">ORDER BY</span> 
+    <span class="sql-function">SUM</span>(<span class="sql-keyword">CASE WHEN</span> l.loan_status = <span class="sql-string">'Defaulted'</span> <span class="sql-keyword">THEN</span> l.loan_amount <span class="sql-keyword">ELSE</span> 0 <span class="sql-keyword">END</span>) <span class="sql-keyword">DESC</span>;</div>
+
+        <h4>Expected State-Level Output:</h4>
+        <table class="output-table">
+            <thead>
+                <tr>
+                    <th>state_name</th>
+                    <th>region</th>
+                    <th>cities_with_operations</th>
+                    <th>total_customers</th>
+                    <th>state_portfolio</th>
+                    <th>state_default_rate</th>
+                    <th>state_losses</th>
+                    <th>state_risk_level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Uttarakhand</td>
+                    <td>North</td>
+                    <td>89</td>
+                    <td>180</td>
+                    <td>₹7.65 Cr</td>
+                    <td>13.54%</td>
+                    <td>₹1.01 Cr</td>
+                    <td>🟡 STATE RISK: Enhanced monitoring</td>
+                </tr>
+                <tr>
+                    <td>Assam</td>
+                    <td>Northeast</td>
+                    <td>78</td>
+                    <td>165</td>
+                    <td>₹6.89 Cr</td>
+                    <td>11.89%</td>
+                    <td>₹0.84 Cr</td>
+                    <td>🟠 STATE WATCH: Process review needed</td>
+                </tr>
+                <tr>
+                    <td>Kerala</td>
+                    <td>South</td>
+                    <td>67</td>
+                    <td>142</td>
+                    <td>₹5.67 Cr</td>
+                    <td>15.67%</td>
+                    <td>₹0.79 Cr</td>
+                    <td>🟡 STATE RISK: Enhanced monitoring</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="insights-box">
+            <h4>🗺️ STATE-LEVEL STRATEGIC INSIGHTS:</h4>
+            <ul>
+                <li><strong>Regional Crisis Pattern:</strong> North region states (Uttarakhand) showing highest absolute losses</li>
+                <li><strong>Multi-Region Risk:</strong> Northeast (Assam) and South (Kerala) also showing elevated risk</li>
+                <li><strong>Regulatory Exposure:</strong> No states yet at 20%+ crisis threshold requiring regulatory intervention</li>
+                <li><strong>State Diversification:</strong> Risk spread across multiple states - not concentrated in single region</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>✅ VALIDATION & TROUBLESHOOTING</h2>
+        
+        <div class="validation-box">
+            <h3>Data Quality Validation Queries</h3>
+            <div class="code-block"><span class="code-comment">-- Validation 1: Check geographic data completeness and relationships</span>
+<span class="sql-keyword">SELECT</span> 
+    <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> total_customers,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> city_id <span class="sql-keyword">IS NULL</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> missing_city_links,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> city_id) <span class="sql-keyword">AS</span> unique_cities_referenced
+<span class="sql-keyword">FROM</span> customers;
+<span class="code-comment">-- Expected: 0 missing city links, multiple unique cities</span>
+
+<span class="code-comment">-- Validation 2: Verify city-state relationship integrity</span>
+<span class="sql-keyword">SELECT</span> 
+    dc.city_name, 
+    ds.state_name,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> c.customer_id) <span class="sql-keyword">AS</span> customers
+<span class="sql-keyword">FROM</span> dim_city dc
+<span class="sql-keyword">INNER JOIN</span> dim_state ds <span class="sql-keyword">ON</span> dc.state_id = ds.state_id
+<span class="sql-keyword">LEFT JOIN</span> customers c <span class="sql-keyword">ON</span> dc.city_id = c.city_id
+<span class="sql-keyword">GROUP BY</span> dc.city_name, ds.state_name
+<span class="sql-keyword">HAVING</span> <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> c.customer_id) = 0
+<span class="sql-keyword">LIMIT</span> 5;
+<span class="code-comment">-- Expected: Cities without customers (normal for complete dimension table)</span>
+
+<span class="code-comment">-- Validation 3: Check loan-customer relationship integrity</span>
+<span class="sql-keyword">SELECT</span> 
+    <span class="sql-function">COUNT</span>(*) <span class="sql-keyword">AS</span> total_loans,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> customer_id <span class="sql-keyword">IS NULL</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> orphaned_loans,
+    <span class="sql-function">COUNT</span>(<span class="sql-keyword">CASE WHEN</span> disbursement_date <span class="sql-keyword">IS NULL</span> <span class="sql-keyword">THEN</span> 1 <span class="sql-keyword">END</span>) <span class="sql-keyword">AS</span> undisbursed_loans
+<span class="sql-keyword">FROM</span> loans;
+<span class="code-comment">-- Expected: 0 orphaned loans, some undisbursed loans normal</span></div>
+        </div>
+
+        <div class="warning-box">
+            <h3>Common Issues & Solutions</h3>
+            <ul>
+                <li><strong>Division by Zero:</strong> Always use NULLIF(denominator, 0) in percentage calculations</li>
+                <li><strong>JOIN Performance:</strong> Ensure indexes on city_id, state_id foreign keys for fast execution</li>
+                <li><strong>Data Quality:</strong> Filter WHERE disbursement_date IS NOT NULL to exclude draft loans</li>
+                <li><strong>Aggregation Logic:</strong> Use HAVING for grouped filters, WHERE for row-level filters</li>
+                <li><strong>Executive Formatting:</strong> CONCAT and ROUND functions for professional crore presentation</li>
+                <li><strong>Statistical Significance:</strong> Use HAVING COUNT(loans) >= 10 to avoid misleading small sample conclusions</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>Performance Optimization Tips</h3>
+            <ul>
+                <li><strong>Index Strategy:</strong> Create indexes on customer_id, city_id, state_id for JOIN performance</li>
+                <li><strong>Query Planning:</strong> Use EXPLAIN PLAN to understand execution strategy</li>
+                <li><strong>Filter Early:</strong> Apply WHERE disbursement_date IS NOT NULL before JOINs when possible</li>
+                <li><strong>Limit Results:</strong> Use TOP/LIMIT for dashboard queries to control result set size</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>💡 ADVANCED SQL MASTERY ACHIEVED</h2>
+        
+        <div class="validation-box">
+            <h3>🔧 Advanced Technical Skills Mastered</h3>
+            <ul>
+                <li><strong>Multi-Table JOIN Chains:</strong> 4-table joins through normalized dimension structure</li>
+                <li><strong>Complex Conditional Aggregation:</strong> COUNT and SUM with nested CASE statements</li>
+                <li><strong>Geographic Intelligence:</strong> City and state-level rollups with business classifications</li>
+                <li><strong>Advanced Business Logic:</strong> Multi-level CASE statements for automated decision-making</li>
+                <li><strong>Executive Formatting:</strong> CONCAT, ROUND, and mathematical functions for professional presentation</li>
+                <li><strong>Statistical Filtering:</strong> HAVING clauses with significance thresholds</li>
+            </ul>
+        </div>
+
+        <div class="info-box">
+            <h3>💼 Business Intelligence Competencies Developed</h3>
+            <ul>
+                <li><strong>Geographic Risk Assessment:</strong> Multi-dimensional city and state-level risk analysis</li>
+                <li><strong>Financial Impact Quantification:</strong> Crore-level loss calculations for executive decisions</li>
+                <li><strong>Crisis Management:</strong> Automated risk classifications driving operational directives</li>
+                <li><strong>Resource Allocation Intelligence:</strong> Priority-based collection team deployment recommendations</li>
+                <li><strong>Regulatory Preparedness:</strong> State-level reporting for compliance and regulatory relations</li>
+                <li><strong>Executive Communication:</strong> Board-ready dashboards with clear action directives</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="summary-section">
+        <h2>📋 SESSION 2 COMPREHENSIVE SUMMARY</h2>
+        
+        <h3>🎯 GEOGRAPHIC CRISIS ANALYSIS ACHIEVEMENTS</h3>
+        <div class="validation-box">
+            <h4>Critical Findings Confirmed:</h4>
+            <ul>
+                <li><strong>Universal Geographic Crisis:</strong> 100% of analyzed cities show >20% default rates (vs 8% healthy)</li>
+                <li><strong>Multi-State Financial Impact:</strong> ₹1.11+ Cr confirmed losses from just top 4 cities</li>
+                <li><strong>Operational Breakdown Evidence:</strong> 50% default rate in Kochi indicates complete system failure</li>
+                <li><strong>Regional Crisis Spread:</strong> North, South, Northeast regions all showing critical risk levels</li>
+                <li><strong>Immediate Shutdowns Required:</strong> 2 cities need complete lending halt + senior management intervention</li>
+            </ul>
+        </div>
+
+        <h3>💡 STRATEGIC BUSINESS INSIGHTS DELIVERED</h3>
+        <div class="info-box">
+            <h4>Executive Crisis Response Framework:</h4>
+            <ul>
+                <li><strong>SHUTDOWN Priority:</strong> Kochi Pur, Jammu Bad (>40% default rates) - halt all new lending</li>
+                <li><strong>CRITICAL Priority:</strong> Shimla Pur (31.82% default, ₹0.36 Cr losses) - senior collection team</li>
+                <li><strong>HIGH Priority:</strong> Dehradun Khand (24% default, ₹0.30 Cr losses) - enhanced resources</li>
+                <li><strong>Recovery Investment Justification:</strong> ₹1.11+ Cr losses justify ₹10-15L dedicated collection budget per city</li>
+                <li><strong>Systematic Problem Confirmation:</strong> Crisis not localized - indicates company-wide operational failures</li>
+            </ul>
+        </div>
+
+        <h3>🔧 SQL EXPERTISE TRANSFORMATION</h3>
+        <div class="learning-tip">
+            <h4>From Basic to Advanced SQL Practitioner:</h4>
+            <ul>
+                <li><strong>Session 1 Level:</strong> Basic aggregations on single table (COUNT, SUM, percentages)</li>
+                <li><strong>Session 2 Level:</strong> Complex 4-table JOINs with geographic intelligence and business logic</li>
+                <li><strong>Technical Evolution:</strong> Multi-dimensional analysis with automated risk classifications</li>
+                <li><strong>Business Evolution:</strong> From data reporting to strategic intelligence and executive decision support</li>
+            </ul>
+        </div>
+
+        <h3>🚀 NEXT SESSION PREPARATION</h3>
+        <div class="objective-box">
+            <h4>Foundation for Customer-Level Deep Dive:</h4>
+            <p><strong>Session 3:</strong> Customer Risk Segmentation - "Who are our financial time bombs?"</p>
+            <p><strong>Key Questions:</strong> Which customer profiles drive these geographic defaults? Is it income-based, employment-based, CIBIL-based, or demographic patterns?</p>
+            <p><strong>Analysis Bridge:</strong> Having confirmed geographic crisis locations, we now drill down to individual customer characteristics creating these city-level failures for targeted recovery strategies.</p>
+        </div>
+
+        <h3>💼 BUSINESS IMPACT ASSESSMENT</h3>
+        <p><strong>This geographic analysis transforms suspected operational problems into confirmed geographic intelligence,</strong> enabling executives to understand that EduFin faces systematic failures across multiple states and city tiers rather than isolated market conditions.</p>
+
+        <p><strong>The ₹1.11+ crore loss from just 4 cities, combined with universal >20% default rates,</strong> provides the board with concrete justification for immediate crisis intervention including operational shutdowns, senior collection team deployment, and comprehensive process audits across all affected geographic markets.</p>
+    </div>
+
+    <div class="footer">
+        <p><strong>© 2025 EduFin SQL Mastery Program. All Rights Reserved.</strong></p>
+        <p>Created by: SQL Training Team | Advanced Business Intelligence Framework</p>
+        <p>Licensed for educational and internal business use. Attribution required when sharing. Commercial redistribution prohibited.</p>
+    </div>
+</body>
+</html>
