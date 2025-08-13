@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFin SQL Track - Business Requirements Document</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .crisis-alert {
+            background: #ff4757;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .section h3 {
+            color: #555;
+            margin: 20px 0 10px 0;
+        }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .kpi-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .kpi-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .contact-info {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #17a2b8;
+        }
+        
+        .copyright {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+        }
+        
+        .er-placeholder {
+            background: #f8f9fa;
+            border: 2px dashed #667eea;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏢 EduFin SQL Track</h1>
+        <p>Complete Business Requirements Document</p>
+        <p>Educational Financing Crisis Analysis</p>
+    </div>
+
+    <div class="crisis-alert">
+        ⚠️ CRISIS SITUATION: ₹12 Crore Portfolio Discrepancy Detected - Immediate Analysis Required
+    </div>
+
+    <div class="section">
+        <h2>🏢 Company Overview: EduFin</h2>
+        
+        <div class="highlight">
+            <strong>Company:</strong> EduFin - Educational Financing Solutions<br>
+            <strong>Industry:</strong> Financial Services (Education Loans & Student Financing)<br>
+            <strong>Scale:</strong> 500,000+ students, 1,200+ educational institutions nationwide<br>
+            <strong>Annual Volume:</strong> ₹500+ crores in loan disbursements
+        </div>
+
+        <h3>Mission Statement</h3>
+        <p>Democratizing access to quality education through innovative financial solutions</p>
+
+        <h3>The Discovery</h3>
+        <p>During routine Q3 audit preparation, automated systems flagged critical discrepancies:</p>
+        <ul>
+            <li><strong>₹12 crore discrepancy</strong> between reported and actual loan disbursements</li>
+            <li><strong>15,000+ student accounts</strong> potentially affected</li>
+            <li><strong>6 months of transactions</strong> under scrutiny</li>
+            <li><strong>Federal compliance audit</strong> scheduled next month</li>
+        </ul>
+
+        <h3>Executive Mandate</h3>
+        <div class="highlight">
+            <blockquote>
+                <em>"We've discovered critical discrepancies in our loan portfolio that could impact our Q3 financial reporting and regulatory compliance. I need our best analyst to investigate immediately and provide actionable insights within 48 hours. The board meeting is Monday, and we need concrete answers about our exposure and mitigation strategies."</em>
+                <br><br>
+                <strong>— Sarah Chen, CEO, EduFin</strong>
+            </blockquote>
+        </div>
+
+        <h3>Business Impact</h3>
+        <ul>
+            <li><strong>Regulatory Risk:</strong> Potential compliance violations with federal lending regulations</li>
+            <li><strong>Financial Risk:</strong> ₹12+ crore exposure analysis required for investor relations</li>
+            <li><strong>Reputational Risk:</strong> Stakeholder confidence at stake with potential market impact</li>
+            <li><strong>Operational Risk:</strong> Process integrity under question, requiring systematic review</li>
+        </ul>
+
+        <h3>Critical Data Points</h3>
+        <ul>
+            <li><strong>Loan Portfolio:</strong> ₹500+ crores outstanding across multiple loan products</li>
+            <li><strong>Student Demographics:</strong> Age 18-35, CIBIL scores ranging 300-850</li>
+            <li><strong>Geographic Coverage:</strong> 30+ states, 100+ cities with varying economic conditions</li>
+            <li><strong>Institution Types:</strong> Universities, Colleges, Vocational Centers with different risk profiles</li>
+            <li><strong>Payment Methods:</strong> Digital payments (85%), Traditional methods (15%)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📊 Database Architecture</h2>
+        
+        <h3>Core Data Structure (9 Tables, 45,000 Total Records)</h3>
+        
+        <h4>Customer & Institutional Data</h4>
+        <table>
+            <tr>
+                <th>Table Name</th>
+                <th>Records</th>
+                <th>Purpose</th>
+                <th>Key Business Context</th>
+            </tr>
+            <tr>
+                <td>customers</td>
+                <td>5,000</td>
+                <td>Student profiles, demographics, credit history</td>
+                <td>Individual borrowers with complete financial profiles</td>
+            </tr>
+            <tr>
+                <td>institutions</td>
+                <td>5,000</td>
+                <td>Educational partners, accreditation, tiers</td>
+                <td>Partnership ecosystem with performance tracking</td>
+            </tr>
+            <tr>
+                <td>dim_city</td>
+                <td>5,000</td>
+                <td>Geographic master data with tier classification</td>
+                <td>Tier-1, Tier-2, Tier-3 city categorization</td>
+            </tr>
+            <tr>
+                <td>dim_state</td>
+                <td>5,000</td>
+                <td>Regional administrative data</td>
+                <td>State-wise regulatory and economic context</td>
+            </tr>
+        </table>
+
+        <h4>Financial Transaction Data</h4>
+        <table>
+            <tr>
+                <th>Table Name</th>
+                <th>Records</th>
+                <th>Purpose</th>
+                <th>Key Business Context</th>
+            </tr>
+            <tr>
+                <td>loans</td>
+                <td>5,000</td>
+                <td>Loan products, disbursements, terms, status</td>
+                <td>Core lending portfolio with complete lifecycle tracking</td>
+            </tr>
+            <tr>
+                <td>payments</td>
+                <td>5,000</td>
+                <td>Repayment transactions, status tracking</td>
+                <td>Payment behavior analysis and cash flow management</td>
+            </tr>
+            <tr>
+                <td>defaults_collections</td>
+                <td>5,000</td>
+                <td>Risk management, recovery processes</td>
+                <td>Default tracking and collection strategy optimization</td>
+            </tr>
+        </table>
+
+        <h4>Analytics & Intelligence Data</h4>
+        <table>
+            <tr>
+                <th>Table Name</th>
+                <th>Records</th>
+                <th>Purpose</th>
+                <th>Key Business Context</th>
+            </tr>
+            <tr>
+                <td>geographic_demographics</td>
+                <td>5,000</td>
+                <td>Regional market analysis and demographics</td>
+                <td>Economic indicators by geographic region</td>
+            </tr>
+            <tr>
+                <td>economic_indicators</td>
+                <td>5,000</td>
+                <td>Economic health metrics by state and quarter</td>
+                <td>Time-series economic data for risk modeling</td>
+            </tr>
+        </table>
+
+        <div class="er-placeholder">
+            <h3>📋 Entity Relationship Diagram</h3>
+            <p><strong>Note:</strong> Please refer to the provided ER diagram image showing the 7-table relationship structure with proper foreign key connections between customers, loans, payments, institutions, and geographic dimensions.</p>
+            <p>The diagram shows normalized 3NF structure with dimension tables (DIM_STATE, DIM_CITY) properly linked to business entities through foreign key relationships.</p>
+        </div>
+
+        <h3>Key Business Relationships</h3>
+        <ul>
+            <li><strong>Customer-Loan Relationship:</strong> CUSTOMERS (1) ↔ (M) LOANS - One customer can have multiple loans</li>
+            <li><strong>Loan-Payment Relationship:</strong> LOANS (1) ↔ (M) PAYMENTS - Each loan has multiple payment transactions</li>
+            <li><strong>Geographic Hierarchy:</strong> CUSTOMERS (M) ↔ (1) DIM_CITY ↔ (1) DIM_STATE - Geographic normalization</li>
+            <li><strong>Institutional Partnerships:</strong> INSTITUTIONS (1) ↔ (M) LOANS - Partnership-based lending</li>
+            <li><strong>Risk Management:</strong> LOANS (1) ↔ (0..1) DEFAULTS_COLLECTIONS - Optional default tracking</li>
+        </ul>
+
+        <h3>Data Relationships Summary</h3>
+        <div class="highlight">
+            <p><strong>Primary Flow:</strong> Students apply through institutional partnerships, receive loans, make payments, with geographic and economic factors influencing risk assessment. The crisis analysis requires understanding these interconnected relationships to identify where the ₹12 crore discrepancy originated and how it propagated through the system.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎯 Business Objectives & KPIs</h2>
+        
+        <h3>Primary Objectives</h3>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <h4>1. Portfolio Health Assessment</h4>
+                <p>Identify the exact source of the ₹12 crore discrepancy through comprehensive loan portfolio analysis</p>
+                <ul>
+                    <li>Total portfolio valuation by loan status</li>
+                    <li>Loan distribution analysis across categories</li>
+                    <li>High-risk loan identification (>₹10L with payment issues)</li>
+                </ul>
+            </div>
+            <div class="kpi-card">
+                <h4>2. Risk Quantification</h4>
+                <p>Measure actual vs projected defaults to understand true financial exposure</p>
+                <ul>
+                    <li>Default rate calculations by segment</li>
+                    <li>Recovery rate analysis by collection method</li>
+                    <li>Geographic risk concentration mapping</li>
+                </ul>
+            </div>
+            <div class="kpi-card">
+                <h4>3. Geographic Risk Analysis</h4>
+                <p>State/city-wise exposure mapping to identify regional risk concentrations</p>
+                <ul>
+                    <li>City-wise default rates with risk categorization</li>
+                    <li>State-level performance comparison</li>
+                    <li>Economic correlation analysis</li>
+                </ul>
+            </div>
+            <div class="kpi-card">
+                <h4>4. Customer Segmentation</h4>
+                <p>High-risk profile identification using multi-dimensional analysis</p>
+                <ul>
+                    <li>CIBIL score distribution and default correlation</li>
+                    <li>Demographic risk patterns identification</li>
+                    <li>Behavioral risk indicators development</li>
+                </ul>
+            </div>
+            <div class="kpi-card">
+                <h4>5. Institutional Performance</h4>
+                <p>Partner relationship optimization through ROI and risk analysis</p>
+                <ul>
+                    <li>Institution-wise ROI calculation</li>
+                    <li>Partnership tier validation</li>
+                    <li>Default rate by institution type</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Critical KPIs to Calculate</h3>
+        
+        <h4>Financial Health Metrics</h4>
+        <ul>
+            <li><strong>Total Portfolio Value:</strong> Sum of all outstanding loans across all statuses</li>
+            <li><strong>Default Rate:</strong> (Defaulted Amount / Total Disbursed Amount) × 100</li>
+            <li><strong>Recovery Rate:</strong> (Collected Amount / Default Amount) × 100</li>
+            <li><strong>Geographic Exposure:</strong> Risk concentration by location with heat mapping</li>
+            <li><strong>Monthly Collection Efficiency:</strong> Trend analysis over 12-month period</li>
+        </ul>
+
+        <h4>Risk Assessment Metrics</h4>
+        <ul>
+            <li><strong>Credit Score Distribution:</strong> Risk profile analysis across CIBIL ranges</li>
+            <li><strong>Payment Behavior Patterns:</strong> Seasonal trends and behavioral indicators</li>
+            <li><strong>Institution Performance:</strong> Partner risk evaluation and ROI analysis</li>
+            <li><strong>Economic Correlation:</strong> Market impact assessment on portfolio performance</li>
+        </ul>
+
+        <h4>Operational Excellence Metrics</h4>
+        <ul>
+            <li><strong>Processing Time:</strong> Loan approval to disbursement efficiency</li>
+            <li><strong>Data Quality Score:</strong> Completeness and accuracy measurements</li>
+            <li><strong>Compliance Adherence:</strong> Regulatory requirement fulfillment tracking</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📈 Analytical Requirements</h2>
+        
+        <h3>V1: Crisis Analysis</h3>
+        <div class="highlight">
+            <strong>Focus:</strong> Damage assessment and immediate containment<br>
+            <strong>Business Problem:</strong> "We've discovered critical discrepancies in our loan portfolio that could impact our Q3 financial reporting and regulatory compliance."
+        </div>
+        
+        <h4>Key Questions to Answer:</h4>
+        <ol>
+            <li><strong>What is the exact nature of the ₹12 crore discrepancy?</strong>
+                <ul>
+                    <li>Which loan statuses are affected?</li>
+                    <li>Are there data integrity issues in loan disbursement records?</li>
+                    <li>How does this impact our reported vs actual portfolio value?</li>
+                </ul>
+            </li>
+            <li><strong>Which student segments are most affected?</strong>
+                <ul>
+                    <li>CIBIL score ranges showing highest discrepancies</li>
+                    <li>Income brackets with problematic loan patterns</li>
+                    <li>Employment types correlating with data issues</li>
+                </ul>
+            </li>
+            <li><strong>What immediate actions can prevent further losses?</strong>
+                <ul>
+                    <li>High-risk loans requiring immediate attention</li>
+                    <li>Process gaps that need immediate closure</li>
+                    <li>Data validation rules to implement urgently</li>
+                </ul>
+            </li>
+            <li><strong>Which geographic regions need urgent intervention?</strong>
+                <ul>
+                    <li>Cities with highest default concentrations</li>
+                    <li>States showing systematic data quality issues</li>
+                    <li>Regional economic factors contributing to crisis</li>
+                </ul>
+            </li>
+            <li><strong>How do we restore stakeholder confidence?</strong>
+                <ul>
+                    <li>Executive dashboard with real-time portfolio health</li>
+                    <li>Board presentation with action plan and timelines</li>
+                    <li>Regulatory compliance documentation</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>V2: Deep Investigation</h3>
+        <div class="highlight">
+            <strong>Focus:</strong> Root cause analysis and strategic planning<br>
+            <strong>Business Problem:</strong> "Now that we've contained the immediate crisis, we need to understand the systematic issues that allowed this to happen and prevent future occurrences."
+        </div>
+        
+        <h4>Key Questions to Answer:</h4>
+        <ol>
+            <li><strong>What systemic issues caused this crisis?</strong>
+                <ul>
+                    <li>Data flow gaps between systems</li>
+                    <li>Manual process dependencies creating errors</li>
+                    <li>Inadequate validation rules in loan processing</li>
+                </ul>
+            </li>
+            <li><strong>How can we prevent similar issues in the future?</strong>
+                <ul>
+                    <li>Automated reconciliation processes</li>
+                    <li>Real-time data quality monitoring</li>
+                    <li>Enhanced business rule validation</li>
+                </ul>
+            </li>
+            <li><strong>Which partnerships need immediate review?</strong>
+                <ul>
+                    <li>Institutions with highest error rates in data submission</li>
+                    <li>Partnership tiers that don't align with actual performance</li>
+                    <li>Geographic partnerships showing systematic issues</li>
+                </ul>
+            </li>
+            <li><strong>What process improvements are required?</strong>
+                <ul>
+                    <li>Loan origination process optimization</li>
+                    <li>Payment processing workflow enhancement</li>
+                    <li>Risk assessment model improvements</li>
+                </ul>
+            </li>
+            <li><strong>How do we optimize our risk management?</strong>
+                <ul>
+                    <li>Predictive models for early default detection</li>
+                    <li>Dynamic risk scoring based on multiple factors</li>
+                    <li>Automated alert systems for anomaly detection</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>V3: Strategic Recovery</h3>
+        <div class="highlight">
+            <strong>Focus:</strong> Business transformation and future-proofing<br>
+            <strong>Business Problem:</strong> "Transform this crisis into a competitive advantage by building industry-leading risk management and operational excellence capabilities."
+        </div>
+        
+        <h4>Key Questions to Answer:</h4>
+        <ol>
+            <li><strong>How do we rebuild operational excellence?</strong>
+                <ul>
+                    <li>End-to-end process redesign with built-in quality controls</li>
+                    <li>Technology infrastructure upgrades for scalability</li>
+                    <li>Team capability enhancement through training and tools</li>
+                </ul>
+            </li>
+            <li><strong>What new monitoring systems should we implement?</strong>
+                <ul>
+                    <li>Real-time portfolio health dashboards</li>
+                    <li>Predictive analytics for early warning systems</li>
+                    <li>Automated compliance monitoring and reporting</li>
+                </ul>
+            </li>
+            <li><strong>How can we improve customer experience while managing risk?</strong>
+                <ul>
+                    <li>Streamlined application processes with enhanced verification</li>
+                    <li>Personalized loan products based on risk profiles</li>
+                    <li>Proactive customer support for payment management</li>
+                </ul>
+            </li>
+            <li><strong>What competitive advantages can we build from this crisis?</strong>
+                <ul>
+                    <li>Industry-leading risk management capabilities</li>
+                    <li>Superior data quality and analytics infrastructure</li>
+                    <li>Enhanced regulatory compliance and reporting</li>
+                </ul>
+            </li>
+            <li><strong>How do we establish industry-leading governance?</strong>
+                <ul>
+                    <li>Board-level risk committee with real-time visibility</li>
+                    <li>Comprehensive data governance framework</li>
+                    <li>Regular audit and compliance validation processes</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>📋 Data Quality Standards</h2>
+        
+        <h3>Validation Rules</h3>
+        <ul>
+            <li><strong>Referential Integrity:</strong> All foreign keys must have valid references</li>
+            <li><strong>Business Logic:</strong> Loan amounts within realistic ranges (₹50K - ₹25L)</li>
+            <li><strong>Temporal Consistency:</strong> Dates follow logical sequence</li>
+            <li><strong>Completeness:</strong> Critical fields must not be NULL</li>
+            <li><strong>Uniqueness:</strong> Email addresses and phone numbers unique per customer</li>
+        </ul>
+
+        <h3>Data Governance Requirements</h3>
+        <ul>
+            <li><strong>Accuracy:</strong> 99.5% data accuracy maintained</li>
+            <li><strong>Completeness:</strong> &lt;1% missing values in critical fields</li>
+            <li><strong>Consistency:</strong> Standardized formats across all tables</li>
+            <li><strong>Timeliness:</strong> Real-time updates for critical transactions</li>
+            <li><strong>Compliance:</strong> GDPR and local data protection adherence</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🚀 Success Criteria</h2>
+        
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <h4>Technical Excellence</h4>
+                <ul>
+                    <li>All queries execute within 30 seconds</li>
+                    <li>100% accurate calculations with proper validation</li>
+                    <li>Clean, documented, and maintainable SQL code</li>
+                    <li>Comprehensive error handling</li>
+                </ul>
+            </div>
+            <div class="kpi-card">
+                <h4>Business Impact</h4>
+                <ul>
+                    <li>Clear identification of ₹12Cr discrepancy source</li>
+                    <li>Actionable recommendations for crisis resolution</li>
+                    <li>Long-term strategic plan for risk management</li>
+                    <li>Executive-ready presentations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📞 Point of Contact</h2>
+        
+        <div class="contact-info">
+            <h3>Technical & Managerial Contact</h3>
+            <p><strong>Name:</strong> Viresh Gendle</p>
+            <p><strong>Role:</strong> Technical Lead & Project Manager</p>
+            <p><strong>Email:</strong> tech@skillaipath.com</p>
+            <p><strong>Website:</strong> skillaipath.com</p>
+            <p><strong>Responsibility:</strong> Overall project coordination, technical guidance, and stakeholder communication</p>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p><strong>© 2025 Skill AI Path. All Rights Reserved.</strong></p>
+        <p>Created by: Viresh Gendle | tech@skillaipath.com | skillaipath.com</p>
+        <p>Licensed for educational and internal business use.</p>
+        <p>Attribution required when sharing. Commercial redistribution prohibited.</p>
+    </div>
+</body>
+</html>
