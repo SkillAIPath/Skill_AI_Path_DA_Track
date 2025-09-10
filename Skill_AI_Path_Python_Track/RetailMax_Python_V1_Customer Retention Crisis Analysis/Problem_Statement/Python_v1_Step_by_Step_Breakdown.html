@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python V1: Beginner-Friendly Breakdown for RetailMax Crisis</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #fff;
+            font-size: 16px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            page-break-inside: avoid;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .header .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+        
+        .header .tagline {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .intro-section {
+            background: #ecf0f1;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 6px solid #3498db;
+        }
+        
+        .intro-section h2 {
+            color: #2980b9;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .crisis-context {
+            background: #fff5f5;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .crisis-context h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .version-container {
+            background: #fff;
+            border: 2px solid #bdc3c7;
+            border-radius: 15px;
+            margin: 40px 0;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            page-break-inside: avoid;
+        }
+        
+        .version-header {
+            background: linear-gradient(135deg, #8e44ad, #663399);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .version-header.v1-1 {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        .version-header.v1-2 {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+        
+        .version-header.v1-3 {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+        
+        .version-header.v1-4 {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+        
+        .version-header.v1-5 {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+        
+        .version-header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .version-header .day-focus {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .version-content {
+            padding: 35px;
+        }
+        
+        .section-block {
+            margin-bottom: 35px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+        
+        .what-section {
+            background: #e8f8f5;
+            border-left: 5px solid #16a085;
+        }
+        
+        .why-section {
+            background: #fdf2e9;
+            border-left: 5px solid #e67e22;
+        }
+        
+        .insights-section {
+            background: #ebf3fd;
+            border-left: 5px solid #3498db;
+        }
+        
+        .section-block h3 {
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .what-section h3 {
+            color: #16a085;
+        }
+        
+        .why-section h3 {
+            color: #e67e22;
+        }
+        
+        .insights-section h3 {
+            color: #3498db;
+        }
+        
+        .section-block p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .section-block ul {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .section-block li {
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 5px solid #f1c40f;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .highlight-box strong {
+            color: #d4ac0d;
+        }
+        
+        .business-impact {
+            background: #d5f4e6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #27ae60;
+        }
+        
+        .business-impact h4 {
+            color: #27ae60;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .key-terms {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid #6c757d;
+        }
+        
+        .key-terms h4 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .summary-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .summary-box h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .footer {
+            background: #34495e;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 50px;
+            font-size: 0.95em;
+        }
+        
+        .page-break {
+            page-break-before: always;
+        }
+        
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+        
+        @media print {
+            .version-container {
+                page-break-inside: avoid;
+                margin: 30px 0;
+            }
+            
+            .section-block {
+                page-break-inside: avoid;
+            }
+            
+            body {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>🐍 Python V1: RetailMax Crisis Analytics – Step-by-Step Breakdown</h1>
+        <div class="subtitle">RetailMax Customer Retention Crisis Analysis</div>
+        <div class="tagline">Your First Steps into Data-Driven Business Problem Solving</div>
+    </div>
+
+    <!-- Introduction Section -->
+    <div class="intro-section">
+        <h2>📚 Understanding Your Journey</h2>
+        <p><strong>Welcome to your first real-world data analytics project!</strong> This isn't just about learning Python - you're stepping into the role of a business analyst at RetailMax, a company facing a critical customer retention crisis.</p>
+        
+        <div class="crisis-context">
+            <h3>🚨 The Business Crisis</h3>
+            <p>RetailMax is losing customers at an alarming rate. Customer retention dropped from 72% to 55% in just 6 months, putting ₹18 crores of revenue at risk. As their newly hired data analyst, you have 5 days to identify the root causes and present solutions to the CEO.</p>
+        </div>
+        
+        <p>Over the next 5 days, you'll learn Python fundamentals while solving real business problems. Each day builds upon the previous, taking you from complete beginner to confident analyst capable of presenting to executives.</p>
+    </div>
+
+    <!-- V1.1 -->
+    <div class="version-container">
+        <div class="version-header v1-1">
+            <h2>🔹 V1.1 – Crisis Understanding & Environment Setup</h2>
+            <div class="day-focus">Day 1: Getting Your Bearings in the Crisis</div>
+        </div>
+        
+        <div class="version-content">
+            <div class="section-block what-section">
+                <h3><span class="emoji">✅</span>What are we doing?</h3>
+                <p>Today you're getting oriented to both the business crisis and your technical toolkit. You'll set up your Python environment (Jupyter Notebook), install the necessary libraries, and get your first look at RetailMax's customer data. Think of this as your first day at a new job - you need to understand the company, the crisis, and familiarize yourself with the tools you'll use to solve problems.</p>
+                
+                <p>You'll load four key datasets: customer information, order history, website behavior data, and customer support tickets. Your main goal is to understand what information you have available and ensure everything is working properly.</p>
+            </div>
+
+            <div class="section-block why-section">
+                <h3><span class="emoji">🤔</span>Why are we doing it?</h3>
+                <p><strong>Business Perspective:</strong> Before a doctor can treat a patient, they need to understand the symptoms and gather information. Similarly, before you can solve RetailMax's retention crisis, you need to understand what data is available and what story it might tell.</p>
+                
+                <p><strong>Technical Perspective:</strong> Python and its data analysis tools (pandas, numpy, matplotlib) are like a surgeon's instruments. You need to make sure everything is set up correctly and that you understand your tools before performing any analysis. A small mistake in setup could lead to wrong conclusions worth millions of rupees.</p>
+
+                <div class="key-terms">
+                    <h4>🔑 Key Terms You'll Learn</h4>
+                    <ul>
+                        <li><strong>Pandas:</strong> Python's tool for working with data tables (like Excel, but much more powerful)</li>
+                        <li><strong>Dataset:</strong> A collection of related data, like all customer information</li>
+                        <li><strong>Data Quality:</strong> How reliable and complete your data is</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-block insights-section">
+                <h3><span class="emoji">💡</span>What are the insights?</h3>
+                <p>By the end of Day 1, you'll have several important realizations:</p>
+                
+                <ul>
+                    <li><strong>Scale Understanding:</strong> RetailMax has over 1 million customer records and millions of transactions - this is big business with big stakes</li>
+                    <li><strong>Data Reality:</strong> Real business data is messy - there are missing values, inconsistencies, and gaps that need to be addressed</li>
+                    <li><strong>Connected Information:</strong> Customer data, orders, behavior, and support tickets are all connected and tell parts of the same story</li>
+                    <li><strong>Business Context:</strong> Every piece of data represents real customers and real money - your analysis will impact actual business decisions</li>
+                </ul>
+
+                <div class="business-impact">
+                    <h4>💼 Business Impact</h4>
+                    <p>This foundational day ensures you don't make costly mistakes later. Understanding your data quality and scope helps you provide accurate recommendations. A misinterpreted dataset could lead to wrong decisions costing crores of rupees.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- V1.2 -->
+    <div class="version-container">
+        <div class="version-header v1-2">
+            <h2>🔹 V1.2 – Data Exploration & Audit</h2>
+            <div class="day-focus">Day 2: Becoming a Data Detective</div>
+        </div>
+        
+        <div class="version-content">
+            <div class="section-block what-section">
+                <h3><span class="emoji">✅</span>What are we doing?</h3>
+                <p>Today you transform into a data detective, systematically examining each piece of evidence (data) to understand what happened to RetailMax's customers. You'll calculate basic statistics, identify patterns, and clean up data quality issues that could mislead your analysis.</p>
+                
+                <p>You'll learn to ask the right questions: How many customers do we have? When did they join? How much do they typically spend? What does a "churned" customer look like compared to a loyal one? You'll use Python to answer these questions with actual numbers, not guesswork.</p>
+            </div>
+
+            <div class="section-block why-section">
+                <h3><span class="emoji">🤔</span>Why are we doing it?</h3>
+                <p><strong>Business Perspective:</strong> RetailMax's executives have theories about why customers are leaving, but theories don't save companies - facts do. You're building a foundation of factual understanding that will guide all future decisions. Every statistic you calculate could validate or disprove a million-rupee business assumption.</p>
+                
+                <p><strong>Technical Perspective:</strong> This is where Python shows its power. Instead of manually counting through thousands of records in Excel (which would take months), Python can analyze millions of customer records in seconds. You're learning to let the computer do the heavy lifting while you focus on interpreting the results.</p>
+
+                <div class="highlight-box">
+                    <strong>Real-World Example:</strong> If you discover that 60% of churned customers had poor website loading times, that's actionable intelligence that could immediately improve retention.
+                </div>
+            </div>
+
+            <div class="section-block insights-section">
+                <h3><span class="emoji">💡</span>What are the insights?</h3>
+                <p>Day 2 reveals the fundamental patterns in RetailMax's business:</p>
+                
+                <ul>
+                    <li><strong>Customer Behavior Patterns:</strong> You'll discover typical customer spending habits, frequency patterns, and what "normal" looks like</li>
+                    <li><strong>Churn Indicators:</strong> Early warning signs that appear before customers leave - these are gold for prevention strategies</li>
+                    <li><strong>Data Quality Issues:</strong> Understanding which data you can trust completely and which requires careful handling</li>
+                    <li><strong>Business Health Metrics:</strong> Key numbers that executives need to know: average customer value, retention rates, growth trends</li>
+                </ul>
+
+                <div class="business-impact">
+                    <h4>💼 Business Impact</h4>
+                    <p>This analysis provides the baseline for measuring improvement. You'll establish the current health of the business and identify which metrics matter most for tracking recovery. These become the KPIs that executives will monitor weekly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- V1.3 -->
+    <div class="version-container">
+        <div class="version-header v1-3">
+            <h2>🔹 V1.3 – Customer Segmentation & Lifetime Value</h2>
+            <div class="day-focus">Day 3: Finding Your Most Valuable Customers</div>
+        </div>
+        
+        <div class="version-content">
+            <div class="section-block what-section">
+                <h3><span class="emoji">✅</span>What are we doing?</h3>
+                <p>Today you're learning one of the most powerful concepts in business: not all customers are equal. You'll segment RetailMax's customers into groups (High Value, Medium Value, Low Value) and calculate Customer Lifetime Value (CLV) - essentially, how much each customer is worth to the business over time.</p>
+                
+                <p>You'll use Python to automatically categorize customers and identify which groups are most at risk. This isn't just academic exercise - you're creating the foundation for targeted retention strategies that could save millions in revenue.</p>
+            </div>
+
+            <div class="section-block why-section">
+                <h3><span class="emoji">🤔</span>Why are we doing it?</h3>
+                <p><strong>Business Perspective:</strong> If you're trying to save a sinking ship, you don't treat every passenger the same - you save the VIPs first. Similarly, if RetailMax is losing customers, you need to identify and prioritize saving the most valuable ones. A high-value customer worth ₹50,000 annually deserves more retention effort than a low-value customer worth ₹2,000.</p>
+                
+                <p><strong>Technical Perspective:</strong> This is where Python's grouping and calculation capabilities shine. You can instantly segment thousands of customers and calculate complex metrics like CLV that would take weeks manually. You're learning to use data to make smart business prioritization decisions.</p>
+
+                <div class="key-terms">
+                    <h4>🔑 Key Business Concepts</h4>
+                    <ul>
+                        <li><strong>Customer Lifetime Value (CLV):</strong> Total money a customer will spend over their entire relationship with the company</li>
+                        <li><strong>Customer Segmentation:</strong> Dividing customers into groups with similar characteristics or value</li>
+                        <li><strong>Churn Rate:</strong> Percentage of customers who stop doing business with you</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-block insights-section">
+                <h3><span class="emoji">💡</span>What are the insights?</h3>
+                <p>Day 3 reveals RetailMax's customer hierarchy and identifies where to focus efforts:</p>
+                
+                <ul>
+                    <li><strong>The 80/20 Rule in Action:</strong> You'll likely discover that 20% of customers generate 80% of revenue - and you'll know exactly who they are</li>
+                    <li><strong>Churn Patterns by Value:</strong> Different customer segments leave for different reasons - high-value customers might leave for service issues while low-value ones might leave for price</li>
+                    <li><strong>Revenue Recovery Opportunities:</strong> By knowing CLV, you can calculate exactly how much revenue you can save by improving retention for each segment</li>
+                    <li><strong>Investment Priorities:</strong> Clear guidance on where RetailMax should spend retention efforts for maximum impact</li>
+                </ul>
+
+                <div class="business-impact">
+                    <h4>💼 Business Impact</h4>
+                    <p>This analysis directly translates to business strategy. You'll be able to tell the CEO: "Focus your retention budget on these 5,000 high-value customers worth ₹12 crores in lifetime value, rather than trying to save everyone equally." This kind of precision can multiply the effectiveness of retention efforts.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- V1.4 -->
+    <div class="version-container">
+        <div class="version-header v1-4">
+            <h2>🔹 V1.4 – Geographic & Product-Based Insights</h2>
+            <div class="day-focus">Day 4: Mapping the Crisis</div>
+        </div>
+        
+        <div class="version-content">
+            <div class="section-block what-section">
+                <h3><span class="emoji">✅</span>What are we doing?</h3>
+                <p>Today you're expanding your analysis to understand where and what is driving the retention crisis. You'll analyze customer behavior by city, region, and product category to identify geographic hotspots and problematic product lines. Think of this as creating a crisis map - showing exactly where RetailMax is bleeding customers and what products are involved.</p>
+                
+                <p>You'll use Python to slice and dice the data by location and product, creating visualizations that show patterns clearly. This geographic and product-focused analysis often reveals surprising insights that aren't visible in overall company statistics.</p>
+            </div>
+
+            <div class="section-block why-section">
+                <h3><span class="emoji">🤔</span>Why are we doing it?</h3>
+                <p><strong>Business Perspective:</strong> Customer retention might seem like a company-wide problem, but often the root causes are localized. Maybe customers in Mumbai are leaving because of delivery issues, or customers buying electronics are unsatisfied with product quality. By identifying these specific pain points, RetailMax can deploy targeted solutions instead of generic fixes.</p>
+                
+                <p><strong>Technical Perspective:</strong> This is where you learn advanced Python techniques for multi-dimensional analysis. You're grouping data by multiple criteria simultaneously (city AND product category), which reveals patterns that single-dimension analysis misses. You're also creating compelling visualizations that make complex patterns immediately obvious to non-technical executives.</p>
+
+                <div class="highlight-box">
+                    <strong>Strategic Value:</strong> Instead of improving everything everywhere (expensive and slow), you can focus on fixing specific problems in specific places (fast and cost-effective).
+                </div>
+            </div>
+
+            <div class="section-block insights-section">
+                <h3><span class="emoji">💡</span>What are the insights?</h3>
+                <p>Day 4 provides the strategic targeting information RetailMax needs:</p>
+                
+                <ul>
+                    <li><strong>Geographic Hotspots:</strong> Identification of specific cities or regions with unusually high churn rates - these become priority markets for immediate intervention</li>
+                    <li><strong>Product Problem Areas:</strong> Specific product categories or items that are driving customer dissatisfaction and departures</li>
+                    <li><strong>Seasonal Patterns:</strong> Understanding if the retention crisis has seasonal components or was triggered by specific events</li>
+                    <li><strong>Resource Allocation Map:</strong> Clear guidance on where to deploy customer success teams, improve operations, or adjust product offerings</li>
+                </ul>
+
+                <div class="business-impact">
+                    <h4>💼 Business Impact</h4>
+                    <p>This analysis enables surgical precision in fixing retention problems. Instead of spending ₹10 crores on company-wide improvements, RetailMax might spend ₹2 crores fixing delivery issues in three specific cities and achieve the same retention improvement. You're providing a roadmap for efficient crisis resolution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- V1.5 -->
+    <div class="version-container">
+        <div class="version-header v1-5">
+            <h2>🔹 V1.5 – Final Insights & CEO Dashboard</h2>
+            <div class="day-focus">Day 5: Presenting Solutions to Leadership</div>
+        </div>
+        
+        <div class="version-content">
+            <div class="section-block what-section">
+                <h3><span class="emoji">✅</span>What are we doing?</h3>
+                <p>Today you're transitioning from analyst to business consultant. You'll synthesize all your discoveries from the previous four days into a compelling story with clear recommendations. You'll create an interactive dashboard using Streamlit that executives can use to explore the data themselves, and prepare a presentation for the CEO that could determine RetailMax's future strategy.</p>
+                
+                <p>This isn't just about summarizing findings - you're translating technical analysis into business action plans with specific steps, timelines, and expected outcomes. You'll quantify the revenue recovery potential and provide a roadmap for getting there.</p>
+            </div>
+
+            <div class="section-block why-section">
+                <h3><span class="emoji">🤔</span>Why are we doing it?</h3>
+                <p><strong>Business Perspective:</strong> Analysis without action is worthless. The CEO doesn't want to know just what went wrong - they need to know how to fix it, how much it will cost, how long it will take, and what results to expect. You're providing a business recovery plan backed by data, not just interesting observations.</p>
+                
+                <p><strong>Technical Perspective:</strong> This is where you learn to create production-ready tools that non-technical users can interact with. Your Streamlit dashboard becomes a living tool that executives can use long after your analysis is complete. You're bridging the gap between technical analysis and business application.</p>
+
+                <div class="key-terms">
+                    <h4>🔑 Executive Communication Skills</h4>
+                    <ul>
+                        <li><strong>Executive Summary:</strong> Key findings presented in 2-3 sentences that busy executives can quickly grasp</li>
+                        <li><strong>ROI Calculation:</strong> Showing the financial return on recommended investments</li>
+                        <li><strong>Action Items:</strong> Specific steps with owners, timelines, and success metrics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section-block insights-section">
+                <h3><span class="emoji">💡</span>What are the insights?</h3>
+                <p>Day 5 culminates in strategic business intelligence that drives action:</p>
+                
+                <ul>
+                    <li><strong>Root Cause Clarity:</strong> One clear, primary driver of the retention crisis that becomes the focus of recovery efforts</li>
+                    <li><strong>Recovery Roadmap:</strong> Specific actions prioritized by impact and feasibility, with realistic timelines</li>
+                    <li><strong>Financial Projections:</strong> Quantified revenue recovery potential (likely ₹8-12 crores) with confidence intervals</li>
+                    <li><strong>Success Metrics:</strong> KPIs to track recovery progress and early warning indicators to prevent future crises</li>
+                    <li><strong>Executive Tool:</strong> An interactive dashboard that enables ongoing monitoring and decision-making</li>
+                </ul>
+
+                <div class="business-impact">
+                    <h4>💼 Business Impact</h4>
+                    <p>Your analysis becomes RetailMax's crisis recovery blueprint. The CEO can present your findings to the board with confidence, the operational teams have clear action items, and the company has a data-driven path out of the crisis. You've demonstrated how Python and data analysis can directly impact business outcomes.</p>
+                </div>
+
+                <div class="summary-box">
+                    <h3>🎯 Your Transformation Complete</h3>
+                    <p>In just 5 days, you've evolved from a Python beginner to a business analyst capable of influencing executive decisions worth crores of rupees. You've learned not just technical skills, but how to think strategically about business problems and communicate solutions effectively to leadership.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overall Journey Summary -->
+    <div class="intro-section">
+        <h2>🚀 Your Learning Journey Complete</h2>
+        <p><strong>Congratulations!</strong> You've completed your transformation from beginner to business-ready data analyst. Here's what you've accomplished:</p>
+        
+        <ul style="font-size: 1.1em; line-height: 1.8;">
+            <li><strong>Technical Mastery:</strong> Python fundamentals, data manipulation with pandas, visualization, and dashboard creation</li>
+            <li><strong>Business Intelligence:</strong> Customer segmentation, lifetime value analysis, geographic insights, and strategic recommendations</li>
+            <li><strong>Executive Communication:</strong> Translating technical findings into business language and actionable strategies</li>
+            <li><strong>Real-World Impact:</strong> Your analysis provides a roadmap to potentially save ₹8-12 crores in revenue for RetailMax</li>
+        </ul>
+        
+        <div class="business-impact">
+            <h4>🎯 What This Means for Your Career</h4>
+            <p>You now have the skills that companies desperately need: the ability to extract business value from data. You can walk into any organization facing data challenges and provide immediate value. Most importantly, you understand that data analysis isn't just about code - it's about solving real business problems that affect real people and real money.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>© 2025 Skill AI Path. All Rights Reserved.</strong></p>
+        <p>Python V1: Beginner-Friendly Breakdown for RetailMax Crisis</p>
+        <p>Created by: Viresh Gendle | tech@skillaipath.com | skillaipath.com</p>
+        <p>Your journey from beginner to business analyst starts here.</p>
+    </div>
+</body>
+</html>

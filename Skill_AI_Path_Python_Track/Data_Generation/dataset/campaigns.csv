@@ -1,0 +1,26 @@
+campaign_id,campaign_name,campaign_type,start_date,end_date,budget,target_segment,channel
+CAMP_001,Weekend Special 2024,Retention,2023-01-18 03:42:00,2023-02-03 03:42:00,1102692,Low Value,Email
+CAMP_002,First Time Buyer 2024,Win-back,2024-03-04 07:04:00,2024-03-28 07:04:00,1745863,High Value,Influencer
+CAMP_003,Women's Day Sale 2023,Acquisition,2023-05-11 00:50:00,2023-06-01 00:50:00,499349,All Customers,Search Ads
+CAMP_004,Laptop Sale 2024,Win-back,2023-03-01 16:20:00,2023-03-23 16:20:00,884306,All Customers,Email
+CAMP_005,Fashion Flash Sale 2023,Win-back,2023-01-10 23:39:00,2023-01-24 23:39:00,404737,All Customers,Email
+CAMP_006,Father's Day Sale 2024,Product Launch,2024-02-08 21:22:00,2024-02-12 21:22:00,1306116,Medium Value,Email
+CAMP_007,Loyalty Rewards 2023,Seasonal,2023-09-15 02:33:00,2023-09-26 02:33:00,987243,New Customers,Social Media
+CAMP_008,Home Appliance Sale 2023,Win-back,2023-09-16 01:25:00,2023-09-25 01:25:00,1604011,High Value,Email
+CAMP_009,Father's Day Sale 2024,Acquisition,2023-08-07 20:06:00,2023-08-12 20:06:00,1301637,All Customers,Email
+CAMP_010,Holi Colors Sale 2023,Seasonal,2024-01-05 23:59:00,2024-01-28 23:59:00,1788969,At-Risk,Social Media
+CAMP_011,Loyalty Rewards 2023,Seasonal,2023-11-27 19:01:00,2023-12-16 19:01:00,1167238,At-Risk,Email
+CAMP_012,Fashion Week Sale 2023,Seasonal,2024-02-14 06:05:00,2024-03-12 06:05:00,307400,At-Risk,Social Media
+CAMP_013,Weekend Special 2023,Retention,2023-06-20 19:08:00,2023-07-10 19:08:00,361469,Medium Value,Email
+CAMP_014,Women's Day Sale 2023,Win-back,2023-02-11 05:21:00,2023-02-26 05:21:00,1069311,High Value,Email
+CAMP_015,Mobile Madness 2024,Seasonal,2024-02-27 22:45:00,2024-03-27 22:45:00,499188,High Value,Social Media
+CAMP_016,Electronics Fest 2024,Acquisition,2023-08-06 05:44:00,2023-08-23 05:44:00,1516546,Medium Value,Social Media
+CAMP_017,Women's Day Sale 2023,Retention,2023-05-23 05:31:00,2023-06-15 05:31:00,1535606,Medium Value,Search Ads
+CAMP_018,Women's Day Sale 2024,Retention,2023-06-11 20:31:00,2023-06-21 20:31:00,1517036,High Value,Social Media
+CAMP_019,Home Appliance Sale 2024,Retention,2023-12-13 09:46:00,2023-12-20 09:46:00,74883,High Value,Email
+CAMP_020,Electronics Fest 2024,Product Launch,2023-08-13 19:15:00,2023-08-31 19:15:00,597155,New Customers,Email
+CAMP_021,Fashion Week Sale 2024,Acquisition,2023-02-03 19:45:00,2023-02-25 19:45:00,652906,All Customers,Email
+CAMP_022,Mother's Day Sale 2023,Acquisition,2023-06-18 18:08:00,2023-07-12 18:08:00,1826109,At-Risk,Influencer
+CAMP_023,Senior Citizen Sale 2024,Seasonal,2023-07-06 11:44:00,2023-08-05 11:44:00,1600196,At-Risk,Search Ads
+CAMP_024,Valentine Special 2023,Seasonal,2024-02-14 22:38:00,2024-02-24 22:38:00,879174,Medium Value,Influencer
+CAMP_025,Monsoon Sale 2023,Seasonal,2023-08-24 18:22:00,2023-09-10 18:22:00,362396,All Customers,Email
