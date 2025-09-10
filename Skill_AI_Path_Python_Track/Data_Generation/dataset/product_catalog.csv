@@ -1,0 +1,301 @@
+product_id,name,category,price,inventory_status
+PROD_0001,iPhone 15,Electronics,29434,In Stock
+PROD_0002,Samsung Galaxy S24,Electronics,85898,Low Stock
+PROD_0003,MacBook Air M3,Electronics,7222,In Stock
+PROD_0004,Dell XPS 13,Electronics,98493,In Stock
+PROD_0005,iPad Pro,Electronics,79030,In Stock
+PROD_0006,Sony WH-1000XM5,Electronics,109369,In Stock
+PROD_0007,AirPods Pro,Electronics,136128,In Stock
+PROD_0008,Canon EOS R5,Electronics,56087,In Stock
+PROD_0009,Nintendo Switch,Electronics,87437,In Stock
+PROD_0010,PlayStation 5,Electronics,107404,In Stock
+PROD_0011,Xbox Series X,Electronics,98280,In Stock
+PROD_0012,Apple Watch,Electronics,38952,In Stock
+PROD_0013,Fitbit Charge 5,Electronics,30527,In Stock
+PROD_0014,Kindle Paperwhite,Electronics,91853,In Stock
+PROD_0015,Echo Dot,Electronics,111767,In Stock
+PROD_0016,Mi Smart TV,Electronics,137010,In Stock
+PROD_0017,OnePlus Nord,Electronics,31477,Low Stock
+PROD_0018,Realme GT Neo,Electronics,136642,Low Stock
+PROD_0019,Vivo V29,Electronics,44370,In Stock
+PROD_0020,Oppo Reno,Electronics,11208,In Stock
+PROD_0021,Nothing Phone,Electronics,105168,In Stock
+PROD_0022,Google Pixel,Electronics,130030,In Stock
+PROD_0023,Levi's Jeans,Fashion,10106,In Stock
+PROD_0024,Nike Air Force,Fashion,14734,Low Stock
+PROD_0025,Adidas Ultraboost,Fashion,14459,In Stock
+PROD_0026,Zara Shirt,Fashion,1112,Low Stock
+PROD_0027,H&M Dress,Fashion,5253,In Stock
+PROD_0028,Puma Sneakers,Fashion,3141,In Stock
+PROD_0029,Ray-Ban Sunglasses,Fashion,2982,In Stock
+PROD_0030,Fossil Watch,Fashion,11680,In Stock
+PROD_0031,Michael Kors Bag,Fashion,8087,In Stock
+PROD_0032,Coach Wallet,Fashion,1790,In Stock
+PROD_0033,Titan Watch,Fashion,10755,In Stock
+PROD_0034,Woodland Shoes,Fashion,2028,Out of Stock
+PROD_0035,Peter England Shirt,Fashion,12271,In Stock
+PROD_0036,Allen Solly Trousers,Fashion,4294,Out of Stock
+PROD_0037,Van Heusen Suit,Fashion,14990,Out of Stock
+PROD_0038,United Colors of Benetton,Fashion,4033,In Stock
+PROD_0039,Myntra Kurta,Fashion,13729,In Stock
+PROD_0040,Fabindia Saree,Fashion,11665,In Stock
+PROD_0041,IKEA Sofa,Home & Living,43874,Low Stock
+PROD_0042,Godrej Almirah,Home & Living,10231,In Stock
+PROD_0043,LG Refrigerator,Home & Living,48091,In Stock
+PROD_0044,Samsung Washing Machine,Home & Living,11554,In Stock
+PROD_0045,Whirlpool AC,Home & Living,33874,In Stock
+PROD_0046,Bajaj Mixer,Home & Living,34836,In Stock
+PROD_0047,Prestige Cooker,Home & Living,48757,In Stock
+PROD_0048,Pigeon Induction,Home & Living,40894,In Stock
+PROD_0049,Cello Water Bottle,Home & Living,43689,Low Stock
+PROD_0050,Milton Tiffin,Home & Living,35294,In Stock
+PROD_0051,Tupperware Container,Home & Living,23374,Low Stock
+PROD_0052,Sleepwell Mattress,Home & Living,30326,In Stock
+PROD_0053,Urban Ladder Table,Home & Living,9598,Low Stock
+PROD_0054,Pepperfry Chair,Home & Living,23218,In Stock
+PROD_0055,Philips LED Bulb,Home & Living,20060,In Stock
+PROD_0056,Havells Fan,Home & Living,24613,In Stock
+PROD_0057,Orient Electric Heater,Home & Living,41859,Low Stock
+PROD_0058,Kindle Paperwhite - Black,Electronics,106615,Low Stock
+PROD_0059,Pigeon Induction - Red,Home & Living,41002,In Stock
+PROD_0060,Oppo Reno - White,Electronics,44951,In Stock
+PROD_0061,Vivo V29 - 64GB,Electronics,135422,Low Stock
+PROD_0062,Dell XPS 13 - Black,Electronics,42387,In Stock
+PROD_0063,Milton Tiffin - XL,Home & Living,6712,In Stock
+PROD_0064,United Colors of Benetton - White,Fashion,7951,In Stock
+PROD_0065,Titan Watch - Blue,Fashion,5343,In Stock
+PROD_0066,Puma Sneakers - White,Fashion,5089,In Stock
+PROD_0067,Vivo V29 - S,Electronics,97633,In Stock
+PROD_0068,MacBook Air M3 - White,Electronics,51972,In Stock
+PROD_0069,Echo Dot - Silver,Electronics,129062,In Stock
+PROD_0070,Nintendo Switch - L,Electronics,41817,In Stock
+PROD_0071,Zara Shirt - 32GB,Fashion,8499,In Stock
+PROD_0072,Samsung Galaxy S24 - S,Electronics,80137,In Stock
+PROD_0073,Peter England Shirt - M,Fashion,14541,Low Stock
+PROD_0074,Oppo Reno - 64GB,Electronics,38812,In Stock
+PROD_0075,Echo Dot - S,Electronics,139343,In Stock
+PROD_0076,Tupperware Container - S,Home & Living,6471,In Stock
+PROD_0077,Google Pixel - M,Electronics,137629,In Stock
+PROD_0078,Echo Dot - Silver,Electronics,16187,In Stock
+PROD_0079,Oppo Reno - 64GB,Electronics,19957,In Stock
+PROD_0080,Canon EOS R5 - 128GB,Electronics,7082,In Stock
+PROD_0081,iPad Pro - White,Electronics,81194,In Stock
+PROD_0082,Peter England Shirt - Blue,Fashion,9841,Out of Stock
+PROD_0083,Fitbit Charge 5 - White,Electronics,63471,Low Stock
+PROD_0084,Fitbit Charge 5 - L,Electronics,29511,In Stock
+PROD_0085,Apple Watch - L,Electronics,127811,In Stock
+PROD_0086,Nothing Phone - XL,Electronics,126858,In Stock
+PROD_0087,Dell XPS 13 - White,Electronics,52257,Low Stock
+PROD_0088,Dell XPS 13 - M,Electronics,118538,In Stock
+PROD_0089,Ray-Ban Sunglasses - M,Fashion,5885,In Stock
+PROD_0090,MacBook Air M3 - S,Electronics,94764,In Stock
+PROD_0091,Havells Fan - Red,Home & Living,47025,In Stock
+PROD_0092,United Colors of Benetton - White,Fashion,5060,In Stock
+PROD_0093,Philips LED Bulb - Black,Home & Living,36722,In Stock
+PROD_0094,iPad Pro - L,Electronics,43145,In Stock
+PROD_0095,Nothing Phone - Red,Electronics,88935,In Stock
+PROD_0096,Nike Air Force - 32GB,Fashion,13184,In Stock
+PROD_0097,Fitbit Charge 5 - Black,Electronics,99763,In Stock
+PROD_0098,Kindle Paperwhite - L,Electronics,60946,In Stock
+PROD_0099,Samsung Galaxy S24 - Red,Electronics,11014,In Stock
+PROD_0100,Google Pixel - M,Electronics,75739,In Stock
+PROD_0101,Michael Kors Bag - 64GB,Fashion,3385,Low Stock
+PROD_0102,Adidas Ultraboost - Blue,Fashion,1634,In Stock
+PROD_0103,Nintendo Switch - M,Electronics,26419,In Stock
+PROD_0104,Coach Wallet - 128GB,Fashion,7896,In Stock
+PROD_0105,Kindle Paperwhite - XL,Electronics,61126,In Stock
+PROD_0106,Google Pixel - Silver,Electronics,53255,In Stock
+PROD_0107,Samsung Galaxy S24 - White,Electronics,117337,In Stock
+PROD_0108,Tupperware Container - Silver,Home & Living,11782,Out of Stock
+PROD_0109,AirPods Pro - S,Electronics,114864,In Stock
+PROD_0110,Mi Smart TV - L,Electronics,145379,In Stock
+PROD_0111,Sony WH-1000XM5 - 128GB,Electronics,119500,In Stock
+PROD_0112,Apple Watch - 128GB,Electronics,107010,In Stock
+PROD_0113,iPhone 15 - XL,Electronics,57051,In Stock
+PROD_0114,MacBook Air M3 - 128GB,Electronics,42910,In Stock
+PROD_0115,Tupperware Container - 64GB,Home & Living,49126,In Stock
+PROD_0116,Xbox Series X - Black,Electronics,44454,Low Stock
+PROD_0117,Philips LED Bulb - Blue,Home & Living,33731,In Stock
+PROD_0118,Titan Watch - White,Fashion,13476,In Stock
+PROD_0119,Google Pixel - M,Electronics,73892,In Stock
+PROD_0120,Myntra Kurta - 128GB,Fashion,560,In Stock
+PROD_0121,Echo Dot - Blue,Electronics,122788,In Stock
+PROD_0122,Zara Shirt - Black,Fashion,4081,In Stock
+PROD_0123,AirPods Pro - M,Electronics,148153,In Stock
+PROD_0124,Puma Sneakers - 32GB,Fashion,6685,In Stock
+PROD_0125,Prestige Cooker - S,Home & Living,14747,In Stock
+PROD_0126,Ray-Ban Sunglasses - 64GB,Fashion,9950,In Stock
+PROD_0127,iPhone 15 - S,Electronics,100366,In Stock
+PROD_0128,iPhone 15 - Silver,Electronics,85469,In Stock
+PROD_0129,Myntra Kurta - White,Fashion,11957,Low Stock
+PROD_0130,Mi Smart TV - 64GB,Electronics,124537,In Stock
+PROD_0131,Pepperfry Chair - M,Home & Living,24050,In Stock
+PROD_0132,Apple Watch - XL,Electronics,116633,In Stock
+PROD_0133,OnePlus Nord - S,Electronics,34721,In Stock
+PROD_0134,Sony WH-1000XM5 - L,Electronics,117298,In Stock
+PROD_0135,Apple Watch - Blue,Electronics,149901,In Stock
+PROD_0136,Oppo Reno - Blue,Electronics,147282,In Stock
+PROD_0137,Allen Solly Trousers - M,Fashion,5169,In Stock
+PROD_0138,Google Pixel - 128GB,Electronics,119686,In Stock
+PROD_0139,Nothing Phone - Silver,Electronics,31011,In Stock
+PROD_0140,Adidas Ultraboost - White,Fashion,1968,Low Stock
+PROD_0141,Levi's Jeans - 32GB,Fashion,7238,In Stock
+PROD_0142,Zara Shirt - L,Fashion,12787,In Stock
+PROD_0143,Fabindia Saree - White,Fashion,10879,In Stock
+PROD_0144,Echo Dot - XL,Electronics,13555,In Stock
+PROD_0145,Google Pixel - Silver,Electronics,115268,In Stock
+PROD_0146,Prestige Cooker - Red,Home & Living,30794,In Stock
+PROD_0147,Realme GT Neo - M,Electronics,35015,In Stock
+PROD_0148,Ray-Ban Sunglasses - L,Fashion,2538,In Stock
+PROD_0149,Apple Watch - L,Electronics,113248,In Stock
+PROD_0150,Nothing Phone - 128GB,Electronics,108758,In Stock
+PROD_0151,iPhone 15 - S,Electronics,63703,In Stock
+PROD_0152,Orient Electric Heater - Silver,Home & Living,18538,In Stock
+PROD_0153,Google Pixel - Silver,Electronics,85582,In Stock
+PROD_0154,Pepperfry Chair - 64GB,Home & Living,16830,In Stock
+PROD_0155,iPhone 15 - M,Electronics,13565,In Stock
+PROD_0156,iPhone 15 - Black,Electronics,45206,In Stock
+PROD_0157,Woodland Shoes - XL,Fashion,13935,Out of Stock
+PROD_0158,Oppo Reno - S,Electronics,92841,In Stock
+PROD_0159,Sony WH-1000XM5 - 32GB,Electronics,117727,In Stock
+PROD_0160,Pigeon Induction - XL,Home & Living,26648,In Stock
+PROD_0161,AirPods Pro - 32GB,Electronics,108105,In Stock
+PROD_0162,Samsung Galaxy S24 - 32GB,Electronics,117486,In Stock
+PROD_0163,iPad Pro - 64GB,Electronics,107344,Low Stock
+PROD_0164,Bajaj Mixer - M,Home & Living,21848,In Stock
+PROD_0165,Orient Electric Heater - Blue,Home & Living,29665,In Stock
+PROD_0166,Canon EOS R5 - White,Electronics,38116,In Stock
+PROD_0167,OnePlus Nord - White,Electronics,107763,In Stock
+PROD_0168,Nothing Phone - Silver,Electronics,149940,In Stock
+PROD_0169,Sony WH-1000XM5 - S,Electronics,58415,In Stock
+PROD_0170,Adidas Ultraboost - White,Fashion,920,In Stock
+PROD_0171,Kindle Paperwhite - Black,Electronics,45120,In Stock
+PROD_0172,iPhone 15 - 32GB,Electronics,147520,Low Stock
+PROD_0173,MacBook Air M3 - 32GB,Electronics,105245,In Stock
+PROD_0174,Levi's Jeans - 128GB,Fashion,12528,In Stock
+PROD_0175,iPad Pro - L,Electronics,98879,In Stock
+PROD_0176,Bajaj Mixer - Red,Home & Living,43763,In Stock
+PROD_0177,Canon EOS R5 - Silver,Electronics,55811,In Stock
+PROD_0178,Realme GT Neo - Red,Electronics,104118,In Stock
+PROD_0179,Nintendo Switch - 64GB,Electronics,18565,In Stock
+PROD_0180,Cello Water Bottle - White,Home & Living,10422,In Stock
+PROD_0181,Nothing Phone - Black,Electronics,32110,Low Stock
+PROD_0182,Dell XPS 13 - L,Electronics,37160,In Stock
+PROD_0183,Zara Shirt - Blue,Fashion,5127,Low Stock
+PROD_0184,Michael Kors Bag - Blue,Fashion,2020,In Stock
+PROD_0185,LG Refrigerator - L,Home & Living,24684,In Stock
+PROD_0186,Prestige Cooker - M,Home & Living,7597,Out of Stock
+PROD_0187,Mi Smart TV - Black,Electronics,113460,In Stock
+PROD_0188,MacBook Air M3 - L,Electronics,25004,In Stock
+PROD_0189,AirPods Pro - 64GB,Electronics,115076,In Stock
+PROD_0190,Urban Ladder Table - S,Home & Living,42520,In Stock
+PROD_0191,Echo Dot - Blue,Electronics,52135,Low Stock
+PROD_0192,Milton Tiffin - Black,Home & Living,12709,In Stock
+PROD_0193,Godrej Almirah - White,Home & Living,23466,In Stock
+PROD_0194,Woodland Shoes - L,Fashion,10559,In Stock
+PROD_0195,Oppo Reno - XL,Electronics,6314,In Stock
+PROD_0196,Puma Sneakers - XL,Fashion,12651,In Stock
+PROD_0197,Nintendo Switch - White,Electronics,55553,In Stock
+PROD_0198,IKEA Sofa - XL,Home & Living,2509,In Stock
+PROD_0199,OnePlus Nord - XL,Electronics,44936,In Stock
+PROD_0200,AirPods Pro - S,Electronics,35091,Low Stock
+PROD_0201,Ray-Ban Sunglasses - Black,Fashion,5866,In Stock
+PROD_0202,iPad Pro - Red,Electronics,26874,In Stock
+PROD_0203,iPad Pro - Silver,Electronics,76740,Low Stock
+PROD_0204,United Colors of Benetton - Red,Fashion,2006,In Stock
+PROD_0205,Apple Watch - 128GB,Electronics,149571,In Stock
+PROD_0206,Milton Tiffin - L,Home & Living,49837,In Stock
+PROD_0207,United Colors of Benetton - M,Fashion,8899,In Stock
+PROD_0208,Peter England Shirt - Red,Fashion,4597,In Stock
+PROD_0209,Sony WH-1000XM5 - Red,Electronics,78684,In Stock
+PROD_0210,Peter England Shirt - White,Fashion,10062,In Stock
+PROD_0211,Vivo V29 - Silver,Electronics,48424,In Stock
+PROD_0212,Ray-Ban Sunglasses - 128GB,Fashion,8492,In Stock
+PROD_0213,Kindle Paperwhite - L,Electronics,116080,In Stock
+PROD_0214,Oppo Reno - 128GB,Electronics,76217,In Stock
+PROD_0215,Xbox Series X - 32GB,Electronics,33195,In Stock
+PROD_0216,Oppo Reno - M,Electronics,117541,In Stock
+PROD_0217,AirPods Pro - 32GB,Electronics,97514,In Stock
+PROD_0218,Woodland Shoes - 64GB,Fashion,13924,In Stock
+PROD_0219,MacBook Air M3 - L,Electronics,48843,In Stock
+PROD_0220,Samsung Galaxy S24 - XL,Electronics,71339,In Stock
+PROD_0221,Vivo V29 - M,Electronics,81932,Low Stock
+PROD_0222,Oppo Reno - 64GB,Electronics,144066,Out of Stock
+PROD_0223,Apple Watch - M,Electronics,12848,In Stock
+PROD_0224,Dell XPS 13 - Blue,Electronics,89588,In Stock
+PROD_0225,Kindle Paperwhite - Blue,Electronics,98780,In Stock
+PROD_0226,Canon EOS R5 - White,Electronics,61409,Low Stock
+PROD_0227,Woodland Shoes - S,Fashion,2876,In Stock
+PROD_0228,Xbox Series X - White,Electronics,7525,In Stock
+PROD_0229,Xbox Series X - 128GB,Electronics,7857,In Stock
+PROD_0230,Xbox Series X - Red,Electronics,126995,In Stock
+PROD_0231,Vivo V29 - S,Electronics,65987,Out of Stock
+PROD_0232,Fabindia Saree - White,Fashion,6817,Low Stock
+PROD_0233,PlayStation 5 - 32GB,Electronics,60620,In Stock
+PROD_0234,OnePlus Nord - Red,Electronics,31979,In Stock
+PROD_0235,Realme GT Neo - Silver,Electronics,24614,In Stock
+PROD_0236,Allen Solly Trousers - 64GB,Fashion,12889,In Stock
+PROD_0237,Kindle Paperwhite - S,Electronics,88917,In Stock
+PROD_0238,AirPods Pro - Red,Electronics,18018,In Stock
+PROD_0239,Mi Smart TV - L,Electronics,17266,In Stock
+PROD_0240,Cello Water Bottle - M,Home & Living,8815,In Stock
+PROD_0241,Zara Shirt - L,Fashion,3303,In Stock
+PROD_0242,Oppo Reno - S,Electronics,105363,In Stock
+PROD_0243,Canon EOS R5 - 32GB,Electronics,10575,In Stock
+PROD_0244,Coach Wallet - Black,Fashion,11045,In Stock
+PROD_0245,Vivo V29 - Black,Electronics,126050,In Stock
+PROD_0246,Milton Tiffin - Blue,Home & Living,27398,In Stock
+PROD_0247,Samsung Galaxy S24 - XL,Electronics,143284,In Stock
+PROD_0248,Nike Air Force - S,Fashion,11064,Out of Stock
+PROD_0249,iPhone 15 - White,Electronics,128179,Low Stock
+PROD_0250,Zara Shirt - M,Fashion,12349,In Stock
+PROD_0251,PlayStation 5 - Silver,Electronics,88149,In Stock
+PROD_0252,Sleepwell Mattress - M,Home & Living,6227,In Stock
+PROD_0253,Fabindia Saree - S,Fashion,8590,In Stock
+PROD_0254,Nike Air Force - M,Fashion,5389,In Stock
+PROD_0255,Echo Dot - L,Electronics,36827,Low Stock
+PROD_0256,Woodland Shoes - 32GB,Fashion,2183,Low Stock
+PROD_0257,iPhone 15 - Red,Electronics,17539,In Stock
+PROD_0258,iPhone 15 - Blue,Electronics,32560,In Stock
+PROD_0259,Xbox Series X - 128GB,Electronics,119211,In Stock
+PROD_0260,Canon EOS R5 - Blue,Electronics,28073,Out of Stock
+PROD_0261,AirPods Pro - 128GB,Electronics,101699,In Stock
+PROD_0262,Realme GT Neo - Black,Electronics,18760,In Stock
+PROD_0263,Nintendo Switch - Black,Electronics,34046,Low Stock
+PROD_0264,Godrej Almirah - Silver,Home & Living,5917,Low Stock
+PROD_0265,Cello Water Bottle - S,Home & Living,46083,In Stock
+PROD_0266,Oppo Reno - M,Electronics,75755,In Stock
+PROD_0267,Sony WH-1000XM5 - Blue,Electronics,125768,In Stock
+PROD_0268,Dell XPS 13 - Blue,Electronics,88711,In Stock
+PROD_0269,iPad Pro - 32GB,Electronics,113342,In Stock
+PROD_0270,Nothing Phone - L,Electronics,37079,In Stock
+PROD_0271,OnePlus Nord - XL,Electronics,68051,In Stock
+PROD_0272,United Colors of Benetton - 64GB,Fashion,8529,In Stock
+PROD_0273,Nintendo Switch - S,Electronics,131538,In Stock
+PROD_0274,Canon EOS R5 - White,Electronics,74156,In Stock
+PROD_0275,Coach Wallet - 128GB,Fashion,1856,In Stock
+PROD_0276,Woodland Shoes - XL,Fashion,14189,In Stock
+PROD_0277,Fossil Watch - 64GB,Fashion,11102,In Stock
+PROD_0278,AirPods Pro - 128GB,Electronics,25451,In Stock
+PROD_0279,MacBook Air M3 - L,Electronics,20798,In Stock
+PROD_0280,AirPods Pro - Black,Electronics,61658,In Stock
+PROD_0281,Echo Dot - M,Electronics,54261,In Stock
+PROD_0282,Mi Smart TV - White,Electronics,94246,In Stock
+PROD_0283,AirPods Pro - 32GB,Electronics,143318,In Stock
+PROD_0284,Orient Electric Heater - S,Home & Living,21435,In Stock
+PROD_0285,Echo Dot - 64GB,Electronics,45369,In Stock
+PROD_0286,Myntra Kurta - White,Fashion,2630,In Stock
+PROD_0287,Canon EOS R5 - S,Electronics,106076,In Stock
+PROD_0288,Philips LED Bulb - 32GB,Home & Living,34650,In Stock
+PROD_0289,AirPods Pro - M,Electronics,54270,Low Stock
+PROD_0290,MacBook Air M3 - Silver,Electronics,115911,Low Stock
+PROD_0291,Sony WH-1000XM5 - 64GB,Electronics,85516,Low Stock
+PROD_0292,Vivo V29 - 64GB,Electronics,31755,In Stock
+PROD_0293,Whirlpool AC - L,Home & Living,8023,In Stock
+PROD_0294,Dell XPS 13 - Red,Electronics,9348,In Stock
+PROD_0295,Echo Dot - Blue,Electronics,74928,In Stock
+PROD_0296,iPhone 15 - L,Electronics,144168,In Stock
+PROD_0297,Echo Dot - S,Electronics,74619,In Stock
+PROD_0298,Zara Shirt - XL,Fashion,1877,In Stock
+PROD_0299,Apple Watch - M,Electronics,60591,In Stock
+PROD_0300,iPad Pro - M,Electronics,136646,In Stock
